@@ -2,7 +2,7 @@ FROM openjdk:17
 
 EXPOSE 8080
 
-LABEL maintainer = "amelie@neuefische.de"
+LABEL maintainer="ameliekontze"
 
 ADD backend/target/app.jar app.jar
 
