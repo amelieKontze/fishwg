@@ -15,7 +15,10 @@ function Navbar() {
                     <Link to="/gallery" className="nav">Gallery</Link>
                 </li>
                 <li>
-                    <Link to="/my_tanks" className="nav">MyTanks</Link>
+                    <Link to="/find-fish" className="nav">FishFind</Link>
+                </li>
+                <li>
+                    <Link to="/my-tanks" className="nav">MyTanks</Link>
                 </li>
                 <li>
                     <Link to="/blog" className="nav">Blog</Link>
