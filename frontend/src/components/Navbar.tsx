@@ -7,9 +7,6 @@ function Navbar() {
     return (
         <>
             <nav className="navbar">
-                <div className="logo">
-                    <img src={logo} height="100" width="100"/>
-                </div>
             <ul className="menu">
                 <li>
                     <Link to="/" className="nav">Home</Link>
@@ -19,6 +16,9 @@ function Navbar() {
                 </li>
                 <li>
                     <Link to="/my_tanks" className="nav">MyTanks</Link>
+                </li>
+                <li>
+                    <Link to="/blog" className="nav">Blog</Link>
                 </li>
             </ul>
             </nav>
