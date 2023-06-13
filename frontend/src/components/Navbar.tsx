@@ -1,7 +1,6 @@
 import React from 'react';
 import {Link, Outlet} from "react-router-dom";
 import "../stylesheets/Navbar.css"
-import logo from "../FishWGLogo.png"
 
 function Navbar() {
     return (
