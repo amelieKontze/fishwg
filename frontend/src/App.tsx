@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Gallery  allFish={fishList} getAllFish={getAllFish}/>}/>
+        <Route path="/gallery" element={<Gallery  allFish={fishList} getAllFish={getAllFish}/>}/>
       </Routes>
     </div>
 
