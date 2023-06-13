@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import axios from "axios";
-import {Fish} from "../pages/FishModel";
+import {Fish} from "../model/FishModel";
 
 
 function UseFish() {
