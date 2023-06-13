@@ -3,7 +3,6 @@ import {Fish} from "../model/FishModel";
 
 type Props = {
     fish: Fish
-    getAllFish: () => void;
 }
 
 function FishCard(props:Props) {

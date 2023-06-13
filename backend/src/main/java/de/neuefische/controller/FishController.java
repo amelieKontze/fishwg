@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping("fish")
 @RequiredArgsConstructor
 public class FishController {
 
     private final FishService fishService;
 
-    @GetMapping("/fish")
+    @GetMapping()
     public List<Fish> getAllFish(){
         return fishService.getAllFish();
     }
