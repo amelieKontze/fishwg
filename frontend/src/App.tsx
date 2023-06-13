@@ -1,13 +1,17 @@
 import React from 'react';
 import './App.css';
 import {Route, Routes} from "react-router-dom";
-import Home from "./pages/Home";
+import Gallery from "./pages/Gallery";
+import useFish from "./hooks/UseFish";
 
 function App() {
+
+    const {getAllFish, fishList} = useFish()
+
   return (
     <div className="App">
       <Routes>
-        <Route index element={<Home/>}/>
+        <Route path="/fish" element={<Gallery  allFish={fishList} getAllFish={getAllFish}/>}/>
       </Routes>
     </div>
 

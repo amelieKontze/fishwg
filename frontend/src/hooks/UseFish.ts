@@ -14,7 +14,7 @@ function UseFish() {
             }).catch((e) => console.log(e.message))
     }
 
-    return {getAllFish}
+    return {getAllFish, fishList}
 }
 
 export default UseFish;
