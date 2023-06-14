@@ -1,0 +1,168 @@
+[{
+  "_id": {
+    "$oid": "648732759e809ed704490971"
+  },
+  "name": "Schwertträger",
+  "scientificName": "Xiphophorus helleri",
+  "image": "https://res.cloudinary.com/dxkqk5znf/image/upload/v1686747567/280309-P6FK47-346_5_htmbcg.jpg",
+  "waterType": "Süßwasser",
+  "origin": "Mittelamerika",
+  "minTankSizeInLitres": 75,
+  "temperature": "22-28",
+  "pH": "7-8,5",
+  "temperament": "Friedlich, Lebhaft"
+},
+{
+  "_id": {
+    "$oid": "648735619e809ed704490973"
+  },
+  "name": "Molly",
+  "scientificName": "Poecilia sphenop",
+  "image": "https://res.cloudinary.com/dxkqk5znf/image/upload/v1686747567/280309-P6FK47-346_4_s84iij.jpg",
+  "waterType": "Süßwasser",
+  "origin": "Mittelamerika",
+  "minTankSizeInLitres": 40,
+  "temperature": "24-28",
+  "pH": "7-8,5",
+  "temperament": "Friedlich, Lebhaft"
+},
+{
+  "_id": {
+    "$oid": "648735b29e809ed704490974"
+  },
+  "name": "Gabelschwanzmakropode ",
+  "scientificName": "Trichogaster leerii",
+  "image": "https://res.cloudinary.com/dxkqk5znf/image/upload/v1686747567/280309-P6FK47-346_3_j7okyo.jpg",
+  "waterType": "Süßwasser",
+  "origin": "Südostasien",
+  "minTankSizeInLitres": 50,
+  "temperature": "24-30",
+  "pH": "6,0-7,5",
+  "temperament": "Friedlich, Labyrinthfisch"
+},
+{
+  "_id": {
+    "$oid": "648736039e809ed704490975"
+  },
+  "name": "Zwergfadenfisch ",
+  "scientificName": "Colisa lalia",
+  "image": "https://res.cloudinary.com/dxkqk5znf/image/upload/v1686747567/280309-P6FK47-346_2_k0dvu4.jpg",
+  "waterType": "Süßwasser",
+  "origin": "Indien, Bangladesch",
+  "minTankSizeInLitres": 40,
+  "temperature": "24-30",
+  "pH": "6,0-7,5",
+  "temperament": "Friedlich, Labyrinthfisch"
+},
+{
+  "_id": {
+    "$oid": "648736479e809ed704490976"
+  },
+  "name": "Skalar  ",
+  "scientificName": "Pterophyllum scalare",
+  "image": "https://res.cloudinary.com/dxkqk5znf/image/upload/v1686747558/280309-P6FK47-346_jiqk3e.jpg",
+  "waterType": "Süßwasser",
+  "origin": "Südamerika",
+  "minTankSizeInLitres": 100,
+  "temperature": "24-30",
+  "pH": "5,5-7,5",
+  "temperament": "Friedlich, territorial"
+},
+{
+  "_id": {
+    "$oid": "648736959e809ed704490977"
+  },
+  "name": "Antennenwels   ",
+  "scientificName": "Ancistrus sp.",
+  "image": "https://res.cloudinary.com/dxkqk5znf/image/upload/v1686747552/280309-P6FK47-346_1_gmlm1w.jpg",
+  "waterType": "Süßwasser",
+  "origin": "Südamerika",
+  "minTankSizeInLitres": 100,
+  "temperatureInCelsius": "23-28 ",
+  "pH": "6,0-7,6",
+  "temperament": "Friedlich, bodenbewohnend"
+},
+{
+  "_id": {
+    "$oid": "648736e09e809ed704490978"
+  },
+  "name": "Kupfersalmle",
+  "scientificName": "Hyphessobrycon amandae",
+  "image": "https://res.cloudinary.com/dxkqk5znf/image/upload/v1686747567/280309-P6FK47-346_5_htmbcg.jpg",
+  "waterType": "Süßwasser",
+  "origin": "Südamerika",
+  "minTankSizeInLitres": 40,
+  "temperatureInCelsius": "23-27",
+  "pH": "6,0-7,5",
+  "temperament": "Friedlich, Schwarmfisch"
+},
+{
+  "_id": {
+    "$oid": "6487370a9e809ed704490979"
+  },
+  "name": "Roter Neon",
+  "scientificName": "Paracheirodon axelrodi",
+  "image": "https://res.cloudinary.com/dxkqk5znf/image/upload/v1686747567/280309-P6FK47-346_4_s84iij.jpg",
+  "waterType": "Süßwasser",
+  "origin": "Südamerika",
+  "minTankSizeInLitres": 40,
+  "temperatureInCelsius": "23-27",
+  "pH": "5-7",
+  "temperament": "Friedlich, Schwarmfisch"
+},
+{
+  "_id": {
+    "$oid": "648737809e809ed70449097a"
+  },
+  "name": "Zwerggarnele",
+  "scientificName": "Neocaridina davidi",
+  "image": "https://res.cloudinary.com/dxkqk5znf/image/upload/v1686747567/280309-P6FK47-346_3_j7okyo.jpg",
+  "waterType": "Süßwasser",
+  "origin": "Taiwan",
+  "minTankSizeInLitres": 10,
+  "temperatureInCelsius": "20-26",
+  "pH": " 6,5-8,0",
+  "temperament": "Friedlich, Algenfresser"
+},
+{
+  "_id": {
+    "$oid": "648737c69e809ed70449097b"
+  },
+  "name": "Diskusfisch ",
+  "scientificName": "Symphysodon sp.",
+  "image": "https://res.cloudinary.com/dxkqk5znf/image/upload/v1686747567/280309-P6FK47-346_2_k0dvu4.jpg",
+  "waterType": "Süßwasser",
+  "origin": "Südamerika",
+  "minTankSizeInLitres": 250,
+  "temperatureInCelsius": "26-32",
+  "pH": "5,5-7,5",
+  "temperament": "Friedlich, territorial"
+},
+{
+  "_id": {
+    "$oid": "64873b709e809ed70449097c"
+  },
+  "name": "Kirschflecksalmler",
+  "scientificName": "Hemigrammus erythrozonus",
+  "image": "https://res.cloudinary.com/dxkqk5znf/image/upload/v1686747558/280309-P6FK47-346_jiqk3e.jpg",
+  "waterType": "Süßwasser",
+  "origin": "Südamerika",
+  "minTankSizeInLitres": 40,
+  "temperatureInCelsius": "24-28",
+  "pH": "5,0-7,5",
+  "temperament": "Friedlich, Schwarmfisch"
+},
+{
+  "_id": {
+    "$oid": "64873bb89e809ed70449097d"
+  },
+  "name": "Goldfisch",
+  "scientificName": "Carassius auratus",
+  "image": "https://res.cloudinary.com/dxkqk5znf/image/upload/v1686747552/280309-P6FK47-346_1_gmlm1w.jpg",
+  "waterType": "Süßwasser",
+  "origin": "Ostasien",
+  "minTankSizeInLitres": 75,
+  "temperatureInCelsius": "18-24",
+  "pH": "6,0-8,0",
+  "temperament": "Friedlich"
+}]
