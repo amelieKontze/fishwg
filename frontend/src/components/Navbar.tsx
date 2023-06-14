@@ -4,7 +4,7 @@ import "../stylesheets/Navbar.css"
 
 function Navbar() {
     return (
-        <>
+        <header>
             <nav className="navbar">
             <ul className="menu">
                 <li>
@@ -14,19 +14,16 @@ function Navbar() {
                     <Link to="/gallery" className="nav">Gallery</Link>
                 </li>
                 <li>
-                    <Link to="/find-fish" className="nav">FishFind</Link>
+                    <Link to="/find-fish" className="nav">FindFish</Link>
                 </li>
                 <li>
                     <Link to="/my-tanks" className="nav">MyTanks</Link>
-                </li>
-                <li>
-                    <Link to="/blog" className="nav">Blog</Link>
                 </li>
             </ul>
             </nav>
 
             <Outlet/>
-        </>
+        </header>
     );
 }
 
