@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import FishCard from "../components/FishCard";
 import {Fish} from "../model/FishModel";
+import "../stylesheets/Gallery.css"
 
 type Props = {
     getAllFish: () => void;
@@ -15,7 +16,7 @@ function Gallery(props:Props) {
     }, [])
     
     return (
-        <div>
+        <div className="gallery">
             <h1>All Fish</h1>
             {props.allFish.map(fish => <FishCard  key={fish.id} fish={fish}/>)}
         </div>

@@ -1,0 +1,48 @@
+.fish-card {
+    display: flex;
+    justify-content: space-evenly;
+    color: #1b1b1b;
+    width: 150px;
+    height: 200px;
+    position: relative;
+    outline: 3px solid #d9d9d9;
+    border-radius: 8px;
+    line-height: 150%;
+    padding: 10px;
+    margin: 10px;
+    background: #28a2c9;
+    background-blend-mode: multiply;
+    background: #28a2c950;
+    transition: background-color 1s ease-in-out;
+    overflow: hidden;
+}
+
+.fish-card-front {
+    bottom: 100px;
+    left: 0px;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    transition: transform 1s cubic-bezier(0.785, 0.135, 0.150, 0.860);
+}
+
+.fish-card-back {
+    transform: translateX(120%);
+    transition: transform 1s cubic-bezier(0.785, 0.135, 0.150, 0.860);
+}
+
+.fish-card:hover {
+    background-color: #28a2c9;
+}
+
+.fish-card:hover .fish-card-front {
+    transform: translateX(-100%);
+}
+
+.fish-card:hover .fish-card-back {
+    transform: translateX(0);
+}
+
+h2 {
+    font-size: 18px;
+}
