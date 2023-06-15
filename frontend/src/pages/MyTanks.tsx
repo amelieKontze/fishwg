@@ -1,8 +1,11 @@
 import React from 'react';
 
 function MyTanks() {
+
+
+
     return (
-        <div>Work in process</div>
+        <button>Add Tank</button>
     );
 }
 

@@ -16,10 +16,10 @@ function FishCard(props:Props) {
                 </div>
                 <div className="fish-card-back">
                     <p>{props.fish.waterType}</p>
-                    <p>{props.fish.origin}</p>
-                    <p>{props.fish.temperatureInCelsius}</p>
-                    <p>{props.fish.pH}</p>
-                    <p>{props.fish.minTankSizeInLitres}liter</p>
+                    <p>Herkunft: {props.fish.origin}</p>
+                    <p>{props.fish.minTemperature}-{props.fish.maxTemperature}°C</p>
+                    <p>pH {props.fish.minPh}-{props.fish.maxPh}</p>
+                    <p>mind. {props.fish.minTankSizeInLitres} Liter</p>
                 </div>
             </div>
         </div>

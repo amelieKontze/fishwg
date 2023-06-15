@@ -19,7 +19,9 @@ public class Fish {
     private String waterType;
     private String origin;
     private int minTankSizeInLitres;
-    private String temperatureInCelsius;
-    private String pH;
+    private int minTemperature;
+    private int maxTemperature;
+    private double minPh;
+    private double maxPh;
     private String temperament;
 }

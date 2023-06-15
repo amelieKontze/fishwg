@@ -6,7 +6,9 @@ export type Fish = {
     waterType: string,
     origin: string,
     minTankSizeInLitres: number,
-    temperatureInCelsius: string,
-    pH: string,
+    minTemperature: number,
+    maxTemperature: number,
+    minPh: number,
+    maxPh: number,
     temperament: string
 }
