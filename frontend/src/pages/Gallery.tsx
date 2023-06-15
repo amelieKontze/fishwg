@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import FishCard from "../components/FishCard";
 import {Fish} from "../model/FishModel";
 import "../stylesheets/Gallery.css"
