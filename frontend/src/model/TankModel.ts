@@ -4,5 +4,6 @@ export type Tank = {
     waterType: string,
     tankSizeInLitres: number,
     tankTemperature: number,
-    residentFish: string
+    residentFish: string,
+    tankPh: number
 }

@@ -7,10 +7,12 @@ import Navbar from "./components/Navbar";
 import FindFish from "./pages/FindFish";
 import MyTanks from "./pages/MyTanks";
 import Home from "./pages/Home";
+import useTank from "./hooks/UseTank";
 
 function App() {
 
     const {getAllFish, fishList} = useFish()
+    const {getAllTanks, tankList} = useTank()
 
   return (
     <div className="App">
@@ -19,7 +21,7 @@ function App() {
         <Route path="/" element={<Home/>}/>
         <Route path="/gallery" element={<Gallery  allFish={fishList} getAllFish={getAllFish}/>}/>
         <Route path="/find-fish" element={<FindFish/>}/>
-        <Route path="/my-tanks" element={<MyTanks/>}/>
+        <Route path="/my-tanks" element={<MyTanks allTanks={tankList} getAllTanks={getAllTanks}/>}/>
       </Routes>
     </div>
 

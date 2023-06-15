@@ -9,7 +9,7 @@ function TankCard(props:Props) {
         <div className="tank-card">
             <h2>{props.tank.name}</h2>
             <p>{props.tank.waterType}</p>
-            <p>{props.tank.tankSizeInLitres}</p>
+            <p>{props.tank.tankSizeInLitres}l</p>
         </div>
     );
 }
