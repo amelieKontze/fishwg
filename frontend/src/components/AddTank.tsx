@@ -1,4 +1,4 @@
-import React, {ChangeEvent, FormEvent, useState} from 'react';
+import React, {ChangeEvent, useState} from 'react';
 import axios from "axios";
 import "../stylesheets/AddTank.css"
 
@@ -11,6 +11,7 @@ function AddTank(props:Props) {
     const [tankName, setTankName] = useState<string>("")
     const [waterType, setWaterType] = useState<string>("")
     const [tankSize, setTankSize] = useState<number>(0)
+    const [tankTemperature, setTankTemperature] = useState<number>(0)
     const [tankPh, setTankPh] = useState<number>(0)
 
 
@@ -32,14 +33,22 @@ function AddTank(props:Props) {
         setTankPh(Number(value))
     }
 
-    function addTank(e:FormEvent<HTMLFormElement>) {
-        axios.post("my-tanks/new-tank")
+    function addTank() {
+        const newTank = {
+            name:tankName,
+            waterType:waterType,
+            tankSizeInLitres:tankSize,
+            tankTemperature:tankTemperature,
+            tankPh:tankPh
+        }
+        axios.post("my-tanks/new-tank", newTank)
             .then(props.getAllTanks)
+        console.log("tank added")
     }
 
     return (
         <div>
-            <form onSubmit={addTank}>
+            <form>
                 <input className="input-text-field" placeholder="Name your tank" type="text" value={tankName} onChange={onChangeHanlderSetTankName}/>
                 <div className="radio-buttons">
                     <label className="radio-button">
@@ -57,7 +66,7 @@ function AddTank(props:Props) {
                 <br/>
                 <input className="input-number-field" type="number" min="5" max="8.5" value={tankPh} onChange={onChangeHandlerSetTankPh}/>
                 <br/>
-                <button type="submit">Add Tank</button>
+                <button onClick={addTank}>Add Tank</button>
             </form>
 
         </div>

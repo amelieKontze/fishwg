@@ -18,6 +18,6 @@ public class TankService {
     }
 
     public Tank addTank(Tank newTank) {
-
+        return tankRepo.save(newTank);
     }
 }
