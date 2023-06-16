@@ -1,7 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React, {ChangeEventHandler, useEffect, useState} from 'react';
 import TankCard from "../components/TankCard";
 import {Tank} from "../model/TankModel";
 import "../stylesheets/MyTanks.css"
+import AddTank from "../components/AddTank";
 
 type Props= {
     getAllTanks: () => void
@@ -31,13 +32,7 @@ function MyTanks(props:Props) {
                 <div className="modal">
                     <div onClick={toggleModal} className="overlay"></div>
                     <div className="modal-content">
-                        <h2>Create a new tank</h2>
-                        <form>
-                            <input/>
-                        </form>
-                        <button className="close-modal" onClick={toggleModal}>
-                            CLOSE
-                        </button>
+                        <AddTank getAllTanks={props.getAllTanks}/>
                     </div>
                 </div>
             )}

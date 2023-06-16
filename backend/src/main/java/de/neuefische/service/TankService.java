@@ -16,4 +16,8 @@ public class TankService {
     public List<Tank> getAllTanks(){
         return tankRepo.findAll();
     }
+
+    public Tank addTank(Tank newTank) {
+
+    }
 }
