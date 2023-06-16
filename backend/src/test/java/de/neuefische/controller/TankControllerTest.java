@@ -12,14 +12,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class FishControllerTest {
+class TankControllerTest {
 
     @Autowired
     MockMvc mockMvc;
 
     @Test
-    void getAllFish_shouldReturnAllFishFromDB() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/fish"))
+    void getAllTanks_shouldReturnAllTanksFromDB() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/my-tanks"))
                 .andExpect(status().isOk())
                 .andExpect(content().json("[]"));
     }

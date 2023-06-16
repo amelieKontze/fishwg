@@ -22,8 +22,10 @@ class FishServiceTest {
             "Süßwasser",
             "Thailand",
             20,
-            "25-30",
-            "6,5-8",
+            25,
+            30,
+            6.5,
+            8.0,
             "aggressiv");
 
     FishService fishService = new FishService(fishRepo);
