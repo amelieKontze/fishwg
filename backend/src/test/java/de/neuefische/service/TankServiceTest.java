@@ -26,7 +26,7 @@ class TankServiceTest {
     TankService tankService = new TankService(tankRepo);
 
     @Test
-    void getAllTanks() {
+    void getAllTanks_shouldReturnAllTanks() {
         //given
         when(tankRepo.findAll()).thenReturn(List.of(tank));
         //when
@@ -36,7 +36,12 @@ class TankServiceTest {
     }
 
     @Test
-    void addTank() {
-
+    void addTank_shouldAddNewTank() {
+        //given
+        when(tankRepo.save(tank)).thenReturn(tank);
+        //when
+        Tank actual = tankService.addTank(tank);
+        //then
+        assertEquals(actual, tank);
     }
 }
