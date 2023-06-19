@@ -25,7 +25,10 @@ function MyTanks(props:Props) {
 
     return (
         <div>
-        <button onClick={addTank} className="btn-modal">Add Tank</button>
+            <div className="page-heading">
+            <h1>My Tanks</h1>
+            </div>
+        <button onClick={addTank} className="button">Add Tank</button>
           <div className="tanks">
               {props.allTanks.map(tank => <TankCard key={tank.id} tank={tank}/>)}
           </div>
