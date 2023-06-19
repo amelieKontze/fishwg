@@ -14,8 +14,7 @@ function AddTank(props:Props) {
     const [tankTemperature, setTankTemperature] = useState<number>(0)
     const [tankPh, setTankPh] = useState<number>(0)
 
-
-    function onChangeHanlderSetTankName(e:ChangeEvent<HTMLInputElement>) {
+    function onChangeHandlderSetTankName(e:ChangeEvent<HTMLInputElement>) {
         setTankName(e.target.value)
     }
 
@@ -33,6 +32,11 @@ function AddTank(props:Props) {
         setTankPh(Number(value))
     }
 
+    function onChangeHandlerSetTankTemperature (e:ChangeEvent<HTMLInputElement>) {
+        const value = e.target.value;
+        setTankTemperature((Number(value)))
+    }
+
     function addTank() {
         const newTank = {
             name:tankName,
@@ -41,15 +45,14 @@ function AddTank(props:Props) {
             tankTemperature:tankTemperature,
             tankPh:tankPh
         }
-        axios.post("my-tanks/new-tank", newTank)
+        axios.post("/new-tank", newTank)
             .then(props.getAllTanks)
-        console.log("tank added")
     }
 
     return (
         <div>
             <form>
-                <input className="input-text-field" placeholder="Name your tank" type="text" value={tankName} onChange={onChangeHanlderSetTankName}/>
+                <input className="input-text-field" placeholder="Name your tank" type="text" value={tankName} onChange={onChangeHandlderSetTankName}/>
                 <div className="radio-buttons">
                     <label className="radio-button">
                         <input name="option" type="radio" value={waterType} onChange={onChangeHandlerSetWaterType}/>
@@ -62,7 +65,9 @@ function AddTank(props:Props) {
                             <span className="radio-label">Salzwasser</span>
                     </label>
                 </div>
-                <input className="input-number-field" type="number" min="15" max="33" value={tankSize} onChange={onChangeHandlerSetTankSize}/>
+                <input className="input-number-field" type="number" min="15" max="33" value={tankTemperature} onChange={onChangeHandlerSetTankSize}/>
+                <br/>
+                <input className="input-range" type="range" min="15" max="33" value={tankSize} onChange={onChangeHandlerSetTankTemperature}/>
                 <br/>
                 <input className="input-number-field" type="number" min="5" max="8.5" value={tankPh} onChange={onChangeHandlerSetTankPh}/>
                 <br/>

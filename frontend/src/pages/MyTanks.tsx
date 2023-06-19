@@ -3,6 +3,8 @@ import TankCard from "../components/TankCard";
 import {Tank} from "../model/TankModel";
 import "../stylesheets/MyTanks.css"
 import AddTank from "../components/AddTank";
+import addTank from "../components/AddTank";
+import {useNavigate} from "react-router-dom";
 
 type Props= {
     getAllTanks: () => void
@@ -10,32 +12,23 @@ type Props= {
 }
 function MyTanks(props:Props) {
 
-    const [modal, setModal] = useState(false);
-
-    const toggleModal = () => {
-        setModal(!modal)
-    }
+    const navigateTo = useNavigate();
 
     useEffect(() => {
         props.getAllTanks()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
+    function addTank() {
+        navigateTo("/new-tank")
+    }
+
     return (
         <div>
-        <button onClick={toggleModal} className="btn-modal">Add Tank</button>
+        <button onClick={addTank} className="btn-modal">Add Tank</button>
           <div className="tanks">
               {props.allTanks.map(tank => <TankCard key={tank.id} tank={tank}/>)}
           </div>
-
-            {modal && (
-                <div className="modal">
-                    <div onClick={toggleModal} className="overlay"></div>
-                    <div className="modal-content">
-                        <AddTank getAllTanks={props.getAllTanks}/>
-                    </div>
-                </div>
-            )}
         </div>
     );
 }
