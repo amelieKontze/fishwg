@@ -34,4 +34,9 @@ class TankServiceTest {
         //then
         assertEquals(actual, List.of(tank));
     }
+
+    @Test
+    void addTank() {
+
+    }
 }
