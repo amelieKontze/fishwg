@@ -16,7 +16,7 @@ function AddTank(props:Props) {
     const [tankPh, setTankPh] = useState<number>(0)
     const navigateTo = useNavigate();
 
-    function onChangeHandlrSetTankName(e:ChangeEvent<HTMLInputElement>) {
+    function onChangeHandlerSetTankName(e:ChangeEvent<HTMLInputElement>) {
         setTankName(e.target.value)
     }
 
@@ -47,14 +47,14 @@ function AddTank(props:Props) {
             tankTemperature:tankTemperature,
             tankPh:tankPh
         }
-        axios.post("my-tanks/new-tank", newTank)
+        axios.post("/my-tanks/new-tank", newTank)
             .then(n => navigateTo("/my-tanks"))
     }
 
     return (
         <div className="new-tank">
             <form>
-                <input className="input-text-field" placeholder="Name your tank" type="text" value={tankName} onChange={onChangeHandlrSetTankName}/>
+                <input className="input-text-field" placeholder="Name your tank" type="text" value={tankName} onChange={onChangeHandlerSetTankName}/>
                 <div className="radio-buttons">
                     <label className="radio-button">
                         <input name="option" type="radio" value="Süßwasser" checked={waterType === "Süßwasser"} onChange={onChangeHandlerSetWaterType}/>

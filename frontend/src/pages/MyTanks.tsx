@@ -19,7 +19,7 @@ function MyTanks(props:Props) {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    function addTank() {
+    function addNewTank() {
         navigateTo("/new-tank")
     }
 
@@ -28,7 +28,7 @@ function MyTanks(props:Props) {
             <div className="page-heading">
             <h1>My Tanks</h1>
             </div>
-        <button onClick={addTank} className="button">Add Tank</button>
+        <button onClick={addNewTank} className="button">Add Tank</button>
           <div className="tanks">
               {props.allTanks.map(tank => <TankCard key={tank.id} tank={tank}/>)}
           </div>
