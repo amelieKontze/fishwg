@@ -1,9 +1,7 @@
-import React, {ChangeEventHandler, useEffect, useState} from 'react';
+import React, {useEffect, } from 'react';
 import TankCard from "../components/TankCard";
 import {Tank} from "../model/TankModel";
 import "../stylesheets/MyTanks.css"
-import AddTank from "../components/AddTank";
-import addTank from "../components/AddTank";
 import {useNavigate} from "react-router-dom";
 
 type Props= {
