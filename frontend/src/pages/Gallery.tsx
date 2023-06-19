@@ -14,12 +14,14 @@ function Gallery(props:Props) {
         props.getAllFish()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-    
+
     return (
+        <>
         <div className="gallery">
             <h1>All Fish</h1>
             {props.allFish.map(fish => <FishCard  key={fish.id} fish={fish}/>)}
         </div>
+       </>
     );
 }
 

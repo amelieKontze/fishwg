@@ -9,19 +9,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document("Fish")
+@Document("Tank")
 @Builder
-public class Fish {
+public class Tank {
     private String id;
     private String name;
-    private String scientificName;
-    private String image;
     private String waterType;
-    private String origin;
-    private int minTankSizeInLitres;
-    private int minTemperature;
-    private int maxTemperature;
-    private double minPh;
-    private double maxPh;
-    private String temperament;
+    private int tankSizeInLitres;
+    private int tankTemperature;
+    private double tankPh;
 }

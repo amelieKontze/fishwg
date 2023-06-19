@@ -1,6 +1,5 @@
 package de.neuefische.service;
 
-
 import de.neuefische.model.Fish;
 import de.neuefische.repository.FishRepo;
 import lombok.RequiredArgsConstructor;
@@ -14,8 +13,6 @@ import java.util.List;
 public class FishService {
 
     private final FishRepo fishRepo;
-
-
 
     public List<Fish> getAllFish() {
         return fishRepo.findAll();

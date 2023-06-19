@@ -43,6 +43,7 @@
     background: linear-gradient(120deg, #CBECF6 30%, #7DD0E7 88%);
     color: #022F40;
     transform: rotateY(180deg);
+    line-height: 5px;
 }
 
 h2 {

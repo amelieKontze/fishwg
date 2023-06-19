@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import axios from "axios";
 import {Fish} from "../model/FishModel";
 
-
 function UseFish() {
 
     const [fishList, setAllFish] = useState<Fish[]>([])
