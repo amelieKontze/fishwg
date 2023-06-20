@@ -1,6 +1,7 @@
 import React, {ChangeEvent, useState} from 'react';
 import axios from "axios";
 import "../stylesheets/AddTank.css"
+import "../stylesheets/AddTankModal.css"
 import {useNavigate} from "react-router-dom";
 
 type Props= {
