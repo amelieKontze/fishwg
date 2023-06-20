@@ -15,6 +15,12 @@ function AddTank(props:Props) {
     const [tankTemperature, setTankTemperature] = useState<string>("");
     const [tankPh, setTankPh] = useState<number>(0)
     const navigateTo = useNavigate();
+    const [modal, setModal] = useState(false);
+
+
+    const toggleModal = () => {
+        setModal(!modal);
+    };
 
     function onChangeHandlerSetTankName(e:ChangeEvent<HTMLInputElement>) {
         setTankName(e.target.value)
@@ -98,6 +104,25 @@ function AddTank(props:Props) {
                     <input className="input-range" type="range" min="5" max="8.5" step="0.1"  value={tankPh} onChange={onChangeHandlerSetTankPh}/>
                     <br/>
                     <span id="range-value">{tankPh} pH</span>
+                </div>
+                <button className="button" onClick={toggleModal}>
+                    Add Fish
+                </button>
+                <div>
+                    {modal && (
+                        <div className="modal">
+                            <div onClick={toggleModal} className="overlay"></div>
+                            <div className="modal-content">
+                                <h2>Add Fish</h2>
+                                <p>
+                                    <em>Hier kommen deann die ganzen Fische rein, wenns funktioniert</em>
+                                </p>
+                                <button className="close-modal" onClick={toggleModal}>
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    )}
                 </div>
                 <button onClick={addTank} className="button">Add</button>
             </form>

@@ -3,6 +3,7 @@ import TankCard from "../components/TankCard";
 import {Tank} from "../model/TankModel";
 import "../stylesheets/MyTanks.css"
 import {useNavigate} from "react-router-dom";
+import addTank from "../components/AddTank";
 
 type Props= {
     getAllTanks: () => void
