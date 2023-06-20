@@ -1,7 +1,7 @@
 .fish-card {
     background-color: transparent;
-    width: 190px;
-    height: 254px;
+    width: 170px;
+    height: 240px;
     perspective: 1000px;
     font-family: sans-serif;
     margin: 10px;
@@ -30,7 +30,6 @@
     height: 100%;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-
     border-radius: 1rem;
 }
 
@@ -43,7 +42,8 @@
     background: linear-gradient(120deg, #CBECF6 30%, #7DD0E7 88%);
     color: #022F40;
     transform: rotateY(180deg);
-    line-height: 5px;
+    line-height: 2px;
+    font-size: 15px;
 }
 
 h2 {
@@ -53,7 +53,8 @@ h2 {
 img {
     display: flex;
     justify-content: center;
-    width: 150px;
+    width: 120px;
     border-radius: 15px;
-    margin-left: 20px;
+    margin-left: auto;
+    margin-right: auto;
 }
