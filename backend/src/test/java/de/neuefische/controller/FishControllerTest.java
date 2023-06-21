@@ -19,7 +19,7 @@ class FishControllerTest {
 
     @Test
     void getAllFish_shouldReturnAllFishFromDB() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/fish"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/fish"))
                 .andExpect(status().isOk())
                 .andExpect(content().json("[]"));
     }
