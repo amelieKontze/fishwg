@@ -77,7 +77,7 @@ function AddTank(props:Props) {
             tankPh: tankPh,
             residentFish: selectedFish
         }
-        axios.post("/my-tanks/new-tank", newTank)
+        axios.post("/api/tank/new-tank", newTank)
             .then(() => navigateTo("/my-tanks"))
     }
 

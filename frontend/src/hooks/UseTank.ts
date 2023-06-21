@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import axios from "axios";
 import {Tank} from "../model/TankModel";
 
@@ -7,7 +7,7 @@ function UseTank() {
     const [tankList, setAllTanks] = useState<Tank[]>([])
 
     function getAllTanks() {
-        axios.get("/my-tanks")
+        axios.get("/api/tank/my-tanks")
             .then((response) => {
                 setAllTanks(response.data)
             }).catch((e) => console.log(e.message))
