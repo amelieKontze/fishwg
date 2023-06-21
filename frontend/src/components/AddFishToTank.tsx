@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react';
 import {Fish} from "../model/FishModel";
 import "../stylesheets/AddFishToTank.css"
 import "../stylesheets/Gallery.css"
+import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 type Props = {
     getAllFish: () => void;
@@ -10,6 +12,7 @@ type Props = {
 
 function AddFishToTank(props: Props) {
     const [selectedFish, setSelectedFish] = useState<Fish[]>([]);
+    const navigateTo = useNavigate()
 
     useEffect(() => {
         props.getAllFish();
@@ -27,6 +30,14 @@ function AddFishToTank(props: Props) {
         }
     };
 
+    function addFishToTank() {
+        const addFish = {
+            residentFish: selectedFish
+        }
+        axios.post("/my-tanks/new-tank", addFish)
+            .then(n => navigateTo("/my-tanks"))
+    }
+
     return (
         <div>
             <h1>Add Fish to Tank</h1>
@@ -37,7 +48,7 @@ function AddFishToTank(props: Props) {
                         <img src={fish.image}/>
                         <p><em>Herkunft:</em> {fish.origin}</p>
                         <p>{fish.temperament}</p>
-                        <button onClick={() => handleFishSelection(fish)}>
+                        <button onClick={() => handleFishSelection(fish)} className="button">
                             {selectedFish.some(selected => selected.id === fish.id)
                                 ? "Deselect"
                                 : "Select"}
@@ -45,7 +56,7 @@ function AddFishToTank(props: Props) {
                     </div>
                 ))}
             </div>
-            <button>Add Selected Fish</button>
+            <button onClick={addFishToTank}>Add Selected Fish</button>
         </div>
     );
 }
