@@ -21,17 +21,12 @@ function MyTanks(props:Props) {
         navigateTo("/new-tank")
     }
 
-    function addFish() {
-        navigateTo("/add-fish")
-    }
-
     return (
         <div>
             <div className="page-heading">
                 <h1>My Tanks</h1>
             </div>
             <button onClick={addNewTank} className="button">Add Tank</button>
-            <button onClick={addFish} className="button">Add Fish</button>
             <div className="tanks">
                 {props.allTanks.map(tank => <TankCard key={tank.id} tank={tank}/>)}
             </div>

@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import {Fish} from "../model/FishModel";
 import "../stylesheets/AddFishToTank.css"
 import "../stylesheets/Gallery.css"
-import axios from "axios";
 import {useNavigate} from "react-router-dom";
 
 type Props = {
@@ -13,6 +12,12 @@ type Props = {
 function AddFishToTank(props: Props) {
     const [selectedFish, setSelectedFish] = useState<Fish[]>([]);
     const navigateTo = useNavigate()
+    const [modal, setModal] = useState(false);
+
+    const toggleModal = () => {
+        setModal(!modal);
+        console.log("ich wurde aufgerufen")
+    };
 
     useEffect(() => {
         props.getAllFish();
@@ -30,16 +35,9 @@ function AddFishToTank(props: Props) {
         }
     };
 
-    function addFishToTank() {
-        const addFish = {
-            residentFish: selectedFish
-        }
-        axios.post("/my-tanks/new-tank", addFish)
-            .then(n => navigateTo("/my-tanks"))
-    }
-
     return (
         <div>
+
             <h1>Add Fish to Tank</h1>
             <div className="gallery">
                 {props.allFish.map(fish => (
@@ -56,7 +54,10 @@ function AddFishToTank(props: Props) {
                     </div>
                 ))}
             </div>
-            <button onClick={addFishToTank}>Add Selected Fish</button>
+            <button className="button" onClick={toggleModal}>
+                Add Fish
+            </button>
+
         </div>
     );
 }
