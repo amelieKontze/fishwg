@@ -9,6 +9,7 @@ import MyTanks from "./pages/MyTanks";
 import Home from "./pages/Home";
 import useTank from "./hooks/UseTank";
 import AddTank from "./components/AddTank";
+import AddFishToTank from "./components/AddFishToTank";
 
 function App() {
 
@@ -23,7 +24,8 @@ function App() {
         <Route path="/gallery" element={<Gallery  allFish={fishList} getAllFish={getAllFish}/>}/>
         <Route path="/find-fish" element={<FindFish/>}/>
         <Route path="/my-tanks" element={<MyTanks allTanks={tankList} getAllTanks={getAllTanks}/>}/>
-        <Route path="/new-tank" element={<AddTank getAllTanks={getAllTanks}/>}/>
+          <Route path="/new-tank" element={<AddTank getAllTanks={getAllTanks}/>}/>
+          <Route path="/add-fish" element={<AddFishToTank allFish={fishList} getAllFish={getAllFish}/>}/>
       </Routes>
     </div>
 

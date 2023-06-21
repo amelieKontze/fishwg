@@ -1,0 +1,12 @@
+#add-fish-card {
+    background: linear-gradient(120deg, #7DD0E7 60%, #CBECF6 88%);
+    color: #022F40;
+    border-radius: 15px;
+    padding: 5px;
+    font-size: 15px;
+    line-height: 15px;
+}
+
+img {
+    width: 70px;
+}

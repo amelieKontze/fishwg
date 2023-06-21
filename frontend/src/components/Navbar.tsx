@@ -20,8 +20,8 @@ function Navbar() {
                     <Link to="/my-tanks" className="nav">MyTanks</Link>
                 </li>
             </ul>
-            </nav>
 
+            </nav>
             <Outlet/>
         </header>
     );
