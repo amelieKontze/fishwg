@@ -10,6 +10,7 @@ import Home from "./pages/Home";
 import useTank from "./hooks/UseTank";
 import AddTank from "./components/AddTank";
 
+
 function App() {
 
     const {getAllFish, fishList} = useFish()
@@ -17,14 +18,15 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar/>
-      <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/gallery" element={<Gallery  allFish={fishList} getAllFish={getAllFish}/>}/>
-        <Route path="/find-fish" element={<FindFish/>}/>
-        <Route path="/my-tanks" element={<MyTanks allTanks={tankList} getAllTanks={getAllTanks}/>}/>
-        <Route path="/new-tank" element={<AddTank getAllTanks={getAllTanks}/>}/>
-      </Routes>
+        <Navbar/>
+        <Routes>
+            <Route path="/" element={<Home/>}/>
+            <Route path="/gallery" element={<Gallery allFish={fishList} getAllFish={getAllFish}/>}/>
+            <Route path="/find-fish" element={<FindFish/>}/>
+            <Route path="/my-tanks" element={<MyTanks allTanks={tankList} getAllTanks={getAllTanks}/>}/>
+            <Route path="/new-tank"
+                   element={<AddTank getAllTanks={getAllTanks} allFish={fishList} getAllFish={getAllFish}/>}/>
+        </Routes>
     </div>
 
   );

@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("my-tanks")
+@RequestMapping("api/tank")
 @RequiredArgsConstructor
 public class TankController {
     private final TankService tankService;
 
-    @GetMapping("")
+    @GetMapping("/my-tanks")
     public List<Tank> getAllTanks() {
         return tankService.getAllTanks();
     }
