@@ -22,7 +22,7 @@ function App() {
         <Routes>
             <Route path="/" element={<Home/>}/>
             <Route path="/gallery" element={<Gallery allFish={fishList} getAllFish={getAllFish}/>}/>
-            <Route path="/find-fish" element={<FindFish/>}/>
+            <Route path="/find-fish" element={<FindFish allFish={fishList} getAllFish={getAllFish}/>}/>
             <Route path="/my-tanks" element={<MyTanks allTanks={tankList} getAllTanks={getAllTanks}/>}/>
             <Route path="/new-tank"
                    element={<AddTank getAllTanks={getAllTanks} allFish={fishList} getAllFish={getAllFish}/>}/>
