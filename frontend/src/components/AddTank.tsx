@@ -146,7 +146,7 @@ function AddTank(props:Props) {
                                         <div key={fish.id} className="fish-card" id="add-fish-card">
                                             <h3>{fish.name}</h3>
                                             <img src={fish.image}/>
-                                            <p><em>Herkunft:</em> {fish.origin}</p>
+                                            <p>Herkunft: {fish.origin}</p>
                                             <p>{fish.temperament}</p>
                                             <button onClick={() => handleFishSelection(fish)} className="button">
                                                 {selectedFish.some(selected => selected.id === fish.id)
