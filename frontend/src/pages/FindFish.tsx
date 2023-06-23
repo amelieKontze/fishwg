@@ -21,7 +21,8 @@ function FindFish(props: Props) {
         const nameMatch = fish.name.toLowerCase().includes(filterName.toLowerCase());
         const waterTypeMatch = fish.waterType.toLowerCase() === filterWaterType.toLowerCase();
         const tankSizeMatch = fish.minTankSizeInLitres <= filterTankSize;
-        return nameMatch && waterTypeMatch && tankSizeMatch;
+        const originMatch = fish.origin.toLowerCase().includes(filterOrigin.toLowerCase());
+        return nameMatch && waterTypeMatch && tankSizeMatch && originMatch;
     });
 
     function onChangeHandlerSetFilterName(e: ChangeEvent<HTMLInputElement>) {
@@ -70,15 +71,21 @@ function FindFish(props: Props) {
             <div className="radio-buttons">
                 <label className="radio-button">
                     <input name="option-origin" type="radio" value="Asien" checked={filterOrigin === "Asien"}
-                           onChange={onChangeHandlerSetFilterWaterType}/>
+                           onChange={onChangeHandlerSetFilterOrigin}/>
                     <div className="radio-circle"></div>
                     <span className="radio-label">Asien</span>
                 </label>
                 <label className="radio-button">
                     <input name="option-origin" type="radio" value="Amerika" checked={filterOrigin === "Amerika"}
-                           onChange={onChangeHandlerSetFilterWaterType}/>
+                           onChange={onChangeHandlerSetFilterOrigin}/>
                     <div className="radio-circle"></div>
                     <span className="radio-label">Amerika</span>
+                </label>
+                <label className="radio-button">
+                    <input name="option-origin" type="radio" value="Afrika" checked={filterOrigin === "Afrika"}
+                           onChange={onChangeHandlerSetFilterOrigin}/>
+                    <div className="radio-circle"></div>
+                    <span className="radio-label">Afrika</span>
                 </label>
             </div>
 
