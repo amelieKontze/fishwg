@@ -12,7 +12,7 @@ function FindFish(props: Props) {
     const [filterWaterType, setFilterWaterType] = useState<string>("")
     const [filterOrigin, setFilterOrigin] = useState<string>("")
     const [filterTankSize, setFilterTankSize] = useState<number>(0)
-    const [filterTemperature, serFilterTemperature] = useState<number>(0)
+    const [filterTemperature, setFilterTemperature] = useState<number>(0)
     const [filterPh, setFilterPh] = useState<number>(0)
     const [filterTemperament, setFilterTemperament] = useState<string>("")
 
@@ -22,7 +22,9 @@ function FindFish(props: Props) {
         const waterTypeMatch = fish.waterType.toLowerCase() === filterWaterType.toLowerCase();
         const tankSizeMatch = fish.minTankSizeInLitres <= filterTankSize;
         const originMatch = fish.origin.toLowerCase().includes(filterOrigin.toLowerCase());
-        return nameMatch && waterTypeMatch && tankSizeMatch && originMatch;
+        const temperatureMatch = fish.minTemperature >= filterTemperature && fish.maxTemperature <= filterTemperature;
+        const phMatch = fish.minPh <= filterPh && fish.maxPh <= filterPh;
+        return nameMatch && waterTypeMatch && tankSizeMatch && originMatch && temperatureMatch && phMatch;
     });
 
     function onChangeHandlerSetFilterName(e: ChangeEvent<HTMLInputElement>) {
@@ -42,20 +44,30 @@ function FindFish(props: Props) {
         setFilterOrigin(e.target.value)
     }
 
+    function onChangeHandlerSetFilterTemperature(e: ChangeEvent<HTMLSelectElement>) {
+        const value = Number(e.target.value);
+        setFilterTemperature(value);
+    }
+
+    function onChangeHandlerSetFilterPh(e: ChangeEvent<HTMLInputElement>) {
+        const value = Number(e.target.value);
+        setFilterPh(value);
+    }
+
     return (
         <>
             <h1>Find Fish</h1>
-
-            <input placeholder="Search fish by name" className="input-text-field"
-                   onChange={onChangeHandlerSetFilterName}/>
-            <div className="radio-buttons">
-                <label className="radio-button">
-                    <input name="option-water-type" type="radio" value="Süßwasser"
-                           checked={filterWaterType === "Süßwasser"}
-                           onChange={onChangeHandlerSetFilterWaterType}/>
-                    <div className="radio-circle"></div>
-                    <span className="radio-label">Süßwasser</span>
-                </label>
+            <div className="filter-fish-container">
+                <input placeholder="Search fish by name" className="input-text-field"
+                       onChange={onChangeHandlerSetFilterName}/>
+                <div className="radio-buttons">
+                    <label className="radio-button">
+                        <input name="option-water-type" type="radio" value="Süßwasser"
+                               checked={filterWaterType === "Süßwasser"}
+                               onChange={onChangeHandlerSetFilterWaterType}/>
+                        <div className="radio-circle"></div>
+                        <span className="radio-label">Süßwasser</span>
+                    </label>
                 <label className="radio-button">
                     <input name="option-water-type" type="radio" value="Salzwasser"
                            checked={filterWaterType === "Salzwasser"}
@@ -88,7 +100,38 @@ function FindFish(props: Props) {
                     <span className="radio-label">Afrika</span>
                 </label>
             </div>
-
+                <div>
+                    <select className="dropdown-temperature" value={filterTemperature}
+                            onChange={onChangeHandlerSetFilterTemperature}>
+                        <option value="">Tank Temperature</option>
+                        <option value="15">15°C</option>
+                        <option value="16">16°C</option>
+                        <option value="17">17°C</option>
+                        <option value="18">18°C</option>
+                        <option value="19">19°C</option>
+                        <option value="20">20°C</option>
+                        <option value="21">21°C</option>
+                        <option value="22">22°C</option>
+                        <option value="23">23°C</option>
+                        <option value="24">24°C</option>
+                        <option value="25">25°C</option>
+                        <option value="26">26°C</option>
+                        <option value="27">27°C</option>
+                        <option value="28">28°C</option>
+                        <option value="29">29°C</option>
+                        <option value="30">30°C</option>
+                        <option value="31">31°C</option>
+                        <option value="32">32°C</option>
+                        <option value="33">33°C</option>
+                    </select>
+                </div>
+                <div>
+                    <input className="input-range" type="range" min="5" max="8.5" step="0.1" value={filterPh}
+                           onChange={onChangeHandlerSetFilterPh}/>
+                    <br/>
+                    <span id="range-value">{filterPh} pH</span>
+                </div>
+            </div>
 
             {filteredFish.length > 0 && (
                 <div className="gallery">
