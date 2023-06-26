@@ -27,6 +27,26 @@ function FindFish(props: Props) {
         return nameMatch && waterTypeMatch && originMatch && tankSizeMatch && temperatureMatch && phMatch;
     });
 
+    let showFilteredFish;
+
+    if (filteredFish.length > 0) {
+        showFilteredFish = (
+            <div className="gallery">
+                {filteredFish.map(fish => <FishCard key={fish.id} fish={fish}/>)}
+            </div>
+        );
+    } else if (filterName || filterWaterType || filterOrigin || filterTankSize !== 0 || filterTemperature !== 0 || filterPh !== 0) {
+        showFilteredFish = (
+            <div className="no-fish-found">No fish found</div>
+        );
+    } else {
+        showFilteredFish = (
+            <div className="gallery">
+                {props.allFish.map(fish => <FishCard key={fish.id} fish={fish}/>)}
+            </div>
+        );
+    }
+
     function onChangeHandlerSetFilterName(e: ChangeEvent<HTMLInputElement>) {
         setFilterName(e.target.value);
     }
@@ -53,6 +73,7 @@ function FindFish(props: Props) {
         const value = Number(e.target.value);
         setFilterPh(value);
     }
+
 
     return (
         <>
@@ -149,17 +170,7 @@ function FindFish(props: Props) {
                 <span id="range-value">{filterPh} pH</span>
             </div>
 
-            {filteredFish.length > 0 ? (
-                <div className="gallery">
-                    {filteredFish.map(fish => <FishCard key={fish.id} fish={fish}/>)}
-                </div>
-            ) : filterName || filterWaterType || filterOrigin || filterTankSize !== 0 || filterTemperature !== 0 || filterPh !== 0 ? (
-                <div className="no-fish-found">No fish found</div>
-            ) : (
-                <div className="gallery">
-                    {props.allFish.map(fish => <FishCard key={fish.id} fish={fish}/>)}
-                </div>
-            )}
+            {showFilteredFish}
         </>
     );
 }
