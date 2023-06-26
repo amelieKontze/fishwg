@@ -2,6 +2,7 @@ import React, {ChangeEvent, useState} from 'react';
 import {Fish} from '../model/FishModel';
 import FishCard from '../components/FishCard';
 import '../stylesheets/FindFish.css';
+import TemperatureDropdown from "../components/TemperatureDropdown";
 
 type Props = {
     getAllFish: () => void;
@@ -21,9 +22,7 @@ function FindFish(props: Props) {
         const waterTypeMatch = filterWaterType === '' || fish.waterType.toLowerCase() === filterWaterType.toLowerCase();
         const originMatch = filterOrigin === '' || fish.origin.toLowerCase().includes(filterOrigin.toLowerCase());
         const tankSizeMatch = filterTankSize === 0 || fish.minTankSizeInLitres <= filterTankSize;
-        const temperatureMatch =
-            filterTemperature === 0 ||
-            (fish.minTemperature <= filterTemperature && fish.maxTemperature >= filterTemperature);
+        const temperatureMatch = filterTemperature === 0 || (fish.minTemperature <= filterTemperature && fish.maxTemperature >= filterTemperature);
         const phMatch = filterPh === 0 || (fish.minPh <= filterPh && fish.maxPh >= filterPh);
         return nameMatch && waterTypeMatch && originMatch && tankSizeMatch && temperatureMatch && phMatch;
     });
@@ -134,29 +133,7 @@ function FindFish(props: Props) {
                 </label>
             </div>
             <div>
-                <select className="dropdown-temperature" value={filterTemperature}
-                        onChange={onChangeHandlerSetFilterTemperature}>
-                    <option value="">Tank Temperature</option>
-                    <option value="15">15°C</option>
-                    <option value="16">16°C</option>
-                    <option value="17">17°C</option>
-                    <option value="18">18°C</option>
-                    <option value="19">19°C</option>
-                    <option value="20">20°C</option>
-                    <option value="21">21°C</option>
-                    <option value="22">22°C</option>
-                    <option value="23">23°C</option>
-                    <option value="24">24°C</option>
-                    <option value="25">25°C</option>
-                    <option value="26">26°C</option>
-                    <option value="27">27°C</option>
-                    <option value="28">28°C</option>
-                    <option value="29">29°C</option>
-                    <option value="30">30°C</option>
-                    <option value="31">31°C</option>
-                    <option value="32">32°C</option>
-                    <option value="33">33°C</option>
-                </select>
+                <TemperatureDropdown value={filterTemperature} onChange={onChangeHandlerSetFilterTemperature}/>
             </div>
             <div>
                 <input
