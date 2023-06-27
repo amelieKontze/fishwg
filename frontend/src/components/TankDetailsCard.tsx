@@ -52,7 +52,7 @@ function TankDetailsCard(props: Props) {
                         <div className="modal-content">
                             <h3>Are you sure you want to delete this tank?</h3>
                             <button className="button" id="delete-button" onClick={deleteTank}>Yes</button>
-                            <button className="button" onClick={onChangeHandlerBack}>No</button>
+                            <button className="button" onClick={toggleModal}>No</button>
                         </div>
                     </div>
                 )}
