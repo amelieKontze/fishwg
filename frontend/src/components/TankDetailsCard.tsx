@@ -32,6 +32,7 @@ function TankDetailsCard(props: Props) {
                 </div>
             ))}</div>
             <button className="button" onClick={onChangeHandlerBack}>zurück</button>
+            <button className="button" id="delete-button">Löschen</button>
         </div>
     );
 }
