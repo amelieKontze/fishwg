@@ -21,7 +21,7 @@ public class TankService {
         return tankRepo.save(newTank);
     }
 
-    public void deleteTank(String tankId) {
-        tankRepo.deleteById(tankId);
+    public void deleteTank(String id) {
+        tankRepo.deleteById(id);
     }
 }

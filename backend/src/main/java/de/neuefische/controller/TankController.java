@@ -23,9 +23,9 @@ public class TankController {
         return tankService.addTank(newTank);
     }
 
-    @DeleteMapping("/delete")
-    public void deleteTank(@PathVariable String tankId) {
-        tankService.deleteTank(tankId);
+    @DeleteMapping("/delete/{id}")
+    public void deleteTank(@PathVariable String id) {
+        tankService.deleteTank(id);
     }
 
 }
