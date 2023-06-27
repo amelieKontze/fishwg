@@ -8,8 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 class TankServiceTest {
 
@@ -60,5 +59,15 @@ class TankServiceTest {
         Tank actual = tankService.addTank(tank);
         //then
         assertEquals(actual, tank);
+    }
+
+    @Test
+    void deleteTank_shouldRemoveTank() {
+        //given
+        String testId = "1";
+        //when
+        tankService.deleteTank(testId);
+        //then
+        verify(tankRepo).deleteById(testId);
     }
 }
