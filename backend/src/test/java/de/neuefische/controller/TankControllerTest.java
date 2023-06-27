@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -27,6 +28,7 @@ class TankControllerTest {
     }
 
     @Test
+    @DirtiesContext
     void addTank_shouldAddNewTankToDB() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.post("/api/tank/new-tank")
                         .contentType("application/json")
@@ -54,6 +56,7 @@ class TankControllerTest {
     }
 
     @Test
+    @DirtiesContext
     void deleteTank_shouldRemoveTankFromDB() throws Exception {
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/api/tank/new-tank")
                         .contentType("application/json")
