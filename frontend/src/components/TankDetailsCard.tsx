@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Tank} from "../model/TankModel";
 import {useNavigate, useParams} from "react-router-dom";
 import "../stylesheets/TankDetailsCard.css"
 import axios from "axios";
+import {Simulate} from "react-dom/test-utils";
+
 
 type Props = {
     allTanks: Tank[]
@@ -14,6 +16,7 @@ function TankDetailsCard(props: Props) {
     const tankId = params.id
     const actualTank = props.allTanks.find(currentTank => currentTank.id === tankId)
     const navigateTo = useNavigate()
+    const [modal, setModal] = useState(false);
 
     function onChangeHandlerBack() {
         navigateTo("/my-tanks")
@@ -23,6 +26,11 @@ function TankDetailsCard(props: Props) {
         axios.delete("/api/tank/delete/" + actualTank?.id)
             .then(n => navigateTo("/my-tanks"))
     }
+
+    const toggleModal = () => {
+        setModal(!modal);
+        console.log("ich wurde aufgerufen")
+    };
 
     return (
         <div className="tank-card" id="tank-details">
@@ -38,7 +46,19 @@ function TankDetailsCard(props: Props) {
                 </div>
             ))}</div>
             <button className="button" onClick={onChangeHandlerBack}>zurück</button>
-            <button className="button" id="delete-button" onClick={deleteTank}>Löschen</button>
+            <button className="button" id="delete-button" onClick={toggleModal}>Löschen</button>
+            <div>
+                {modal && (
+                    <div className="modal">
+                        <div onClick={toggleModal} className="overlay"></div>
+                        <div className="modal-content">
+                            <h3>Are you sure you want to delete this tank?</h3>
+                            <button className="button" id="delete-button" onClick={deleteTank}>Yes</button>
+                            <button className="button" onClick={onChangeHandlerBack}>No</button>
+                        </div>
+                    </div>
+                )}
+            </div>
         </div>
     );
 }
