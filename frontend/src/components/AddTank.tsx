@@ -4,6 +4,7 @@ import "../stylesheets/AddTank.css"
 import "../stylesheets/AddTankModal.css"
 import {useNavigate} from "react-router-dom";
 import {Fish} from "../model/FishModel";
+import TemperatureDropdown from "./TemperatureDropdown";
 
 type Props= {
     getAllTanks: () => void
@@ -16,7 +17,7 @@ function AddTank(props:Props) {
     const [tankName, setTankName] = useState<string>("")
     const [waterType, setWaterType] = useState<string>("")
     const [tankSize, setTankSize] = useState<number>(0)
-    const [tankTemperature, setTankTemperature] = useState<string>("");
+    const [tankTemperature, setTankTemperature] = useState<number>(0);
     const [selectedFish, setSelectedFish] = useState<Fish[]>([]);
     const [tankPh, setTankPh] = useState<number>(0)
     const navigateTo = useNavigate();
@@ -53,7 +54,7 @@ function AddTank(props:Props) {
     }
 
     function onChangeHandlerSetTankTemperature(e: ChangeEvent<HTMLSelectElement>) {
-        const value = e.target.value;
+        const value = Number(e.target.value);
         setTankTemperature(value);
     }
 
@@ -101,28 +102,7 @@ function AddTank(props:Props) {
                     </label>
                 </div>
                 <div>
-                    <select className="dropdown-temperature" value={tankTemperature} onChange={onChangeHandlerSetTankTemperature}>
-                        <option value="">Tank Temperature</option>
-                        <option value="15">15°C</option>
-                        <option value="16">16°C</option>
-                        <option value="17">17°C</option>
-                        <option value="18">18°C</option>
-                        <option value="19">19°C</option>
-                        <option value="20">20°C</option>
-                        <option value="21">21°C</option>
-                        <option value="22">22°C</option>
-                        <option value="23">23°C</option>
-                        <option value="24">24°C</option>
-                        <option value="25">25°C</option>
-                        <option value="26">26°C</option>
-                        <option value="27">27°C</option>
-                        <option value="28">28°C</option>
-                        <option value="29">29°C</option>
-                        <option value="30">30°C</option>
-                        <option value="31">31°C</option>
-                        <option value="32">32°C</option>
-                        <option value="33">33°C</option>
-                    </select>
+                    <TemperatureDropdown value={tankTemperature} onChange={onChangeHandlerSetTankTemperature}/>
                 </div>
                 <div>
                 <input className="input-number" type="number"  placeholder="Tank size in litres" value={tankSize !== 0 ? tankSize : ""} onChange={onChangeHandlerSetTankSize}/>
@@ -146,7 +126,7 @@ function AddTank(props:Props) {
                                         <div key={fish.id} className="fish-card" id="add-fish-card">
                                             <h3>{fish.name}</h3>
                                             <img src={fish.image}/>
-                                            <p><em>Herkunft:</em> {fish.origin}</p>
+                                            <p>Herkunft: {fish.origin}</p>
                                             <p>{fish.temperament}</p>
                                             <button onClick={() => handleFishSelection(fish)} className="button">
                                                 {selectedFish.some(selected => selected.id === fish.id)

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './App.css';
 import {Route, Routes} from "react-router-dom";
 import Gallery from "./pages/Gallery";
@@ -13,16 +13,21 @@ import AddTank from "./components/AddTank";
 
 function App() {
 
+    useEffect(() => {
+        getAllFish()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
     const {getAllFish, fishList} = useFish()
     const {getAllTanks, tankList} = useTank()
 
-  return (
-    <div className="App">
-        <Navbar/>
-        <Routes>
-            <Route path="/" element={<Home/>}/>
-            <Route path="/gallery" element={<Gallery allFish={fishList} getAllFish={getAllFish}/>}/>
-            <Route path="/find-fish" element={<FindFish/>}/>
+    return (
+        <div className="App">
+            <Navbar/>
+            <Routes>
+                <Route path="/" element={<Home/>}/>
+                <Route path="/gallery" element={<Gallery allFish={fishList} getAllFish={getAllFish}/>}/>
+            <Route path="/find-fish" element={<FindFish allFish={fishList} getAllFish={getAllFish}/>}/>
             <Route path="/my-tanks" element={<MyTanks allTanks={tankList} getAllTanks={getAllTanks}/>}/>
             <Route path="/new-tank"
                    element={<AddTank getAllTanks={getAllTanks} allFish={fishList} getAllFish={getAllFish}/>}/>

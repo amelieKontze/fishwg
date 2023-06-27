@@ -1,0 +1,11 @@
+.find-fish-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.no-fish-found {
+    font-size: 20px;
+    margin-top: 30px;
+    color: #016E89;
+    font-weight: bolder;
+}
