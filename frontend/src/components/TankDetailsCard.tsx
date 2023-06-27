@@ -3,8 +3,6 @@ import {Tank} from "../model/TankModel";
 import {useNavigate, useParams} from "react-router-dom";
 import "../stylesheets/TankDetailsCard.css"
 import axios from "axios";
-import {Simulate} from "react-dom/test-utils";
-
 
 type Props = {
     allTanks: Tank[]
