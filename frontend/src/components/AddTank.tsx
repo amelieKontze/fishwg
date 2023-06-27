@@ -82,6 +82,10 @@ function AddTank(props:Props) {
             .then(() => navigateTo("/my-tanks"))
     }
 
+    function cancelAddTank() {
+        navigateTo("/my-tanks")
+    }
+
     return (
         <div className="new-tank">
             <div>
@@ -143,7 +147,10 @@ function AddTank(props:Props) {
                         </div>
                     )}
                 </div>
-                <button onClick={addTank} className="button">Add</button>
+                <div className="two-buttons">
+                    <button onClick={addTank} className="button">Add</button>
+                    <button onClick={cancelAddTank} className="button">cancel</button>
+                </div>
             </div>
         </div>
     );

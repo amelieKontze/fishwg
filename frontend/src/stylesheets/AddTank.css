@@ -153,3 +153,6 @@ option {
     box-shadow: -407px 0 0 400px #016E89;
 }
 
+.two-buttons {
+    display: flex;
+}
