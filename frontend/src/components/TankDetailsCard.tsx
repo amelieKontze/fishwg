@@ -2,6 +2,7 @@ import React from 'react';
 import {Tank} from "../model/TankModel";
 import {useNavigate, useParams} from "react-router-dom";
 import "../stylesheets/TankDetailsCard.css"
+import axios from "axios";
 
 type Props = {
     allTanks: Tank[]
@@ -18,6 +19,11 @@ function TankDetailsCard(props: Props) {
         navigateTo("/my-tanks")
     }
 
+    function deleteTank() {
+        axios.delete("/my-tanks/" + actualTank?.id)
+            .then(n => navigateTo("/my-tanks"))
+    }
+
     return (
         <div className="tank-card" id="tank-details">
             <h2>{actualTank?.name}</h2>
@@ -32,7 +38,7 @@ function TankDetailsCard(props: Props) {
                 </div>
             ))}</div>
             <button className="button" onClick={onChangeHandlerBack}>zurück</button>
-            <button className="button" id="delete-button">Löschen</button>
+            <button className="button" id="delete-button" onClick={deleteTank}>Löschen</button>
         </div>
     );
 }
