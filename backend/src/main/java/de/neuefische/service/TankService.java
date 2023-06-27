@@ -13,11 +13,15 @@ public class TankService {
 
     private final TankRepo tankRepo;
 
-    public List<Tank> getAllTanks(){
+    public List<Tank> getAllTanks() {
         return tankRepo.findAll();
     }
 
     public Tank addTank(Tank newTank) {
         return tankRepo.save(newTank);
+    }
+
+    public void deleteTank(String tankId) {
+        tankRepo.deleteById(tankId);
     }
 }

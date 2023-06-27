@@ -20,7 +20,7 @@ function TankDetailsCard(props: Props) {
     }
 
     function deleteTank() {
-        axios.delete("/my-tanks/" + actualTank?.id)
+        axios.delete("api/tank/delete" + actualTank?.id)
             .then(n => navigateTo("/my-tanks"))
     }
 
