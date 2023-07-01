@@ -19,8 +19,13 @@ public class TankController {
     }
 
     @PostMapping("/new-tank")
-    public Tank addTank(@RequestBody Tank newTank){
+    public Tank addTank(@RequestBody Tank newTank) {
         return tankService.addTank(newTank);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteTank(@PathVariable String id) {
+        tankService.deleteTank(id);
     }
 
 }
