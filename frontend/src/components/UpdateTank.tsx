@@ -6,10 +6,12 @@ import {Fish} from "../model/FishModel";
 import axios from "axios";
 import TemperatureDropdown from "./TemperatureDropdown";
 import WaterTypeRadio from "./WaterTypeRadio";
+import SelectFishGallery from "./SelectFishGallery";
 
 type Props = {
     tank: Tank[]
     allFish: Fish[]
+    getAllFish: () => void
 }
 
 function UpdateTank(props: Props) {
@@ -99,20 +101,10 @@ function UpdateTank(props: Props) {
                             <div onClick={toggleModal} className="overlay"></div>
                             <div className="modal-content">
                                 <h3>update fish</h3>
-                                <div className="gallery">
-                                    {props.allFish.map(fish => (
-                                        <div key={fish.id} className="fish-card" id="add-fish-card">
-                                            <h3>{fish.name}</h3>
-                                            <img src={fish.image}/>
-                                            <p>Herkunft: {fish.origin}</p>
-                                            <p>{fish.temperament}</p>
-                                            <button onClick={() => handleFishSelection(fish)} className="button">
-                                                {selectedFish.some(selected => selected.id === fish.id)
-                                                    ? "Deselect"
-                                                    : "Select"}
-                                            </button>
-                                        </div>
-                                    ))}
+                                <div>
+                                    <SelectFishGallery getAllFish={props.getAllFish} allFish={props.allFish}
+                                                       handleFishSelection={handleFishSelection}
+                                                       selectedFish={selectedFish}/>
                                 </div>
                                 <button className="button" onClick={toggleModal}>
                                     update fish
