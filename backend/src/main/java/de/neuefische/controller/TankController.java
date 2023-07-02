@@ -29,7 +29,7 @@ public class TankController {
     }
 
     @PutMapping("/update-tank/{id}")
-    public Tank updateTank(@RequestBody Tank updatedTank) {
+    public Tank updateTank(@PathVariable String id, @RequestBody Tank updatedTank) {
         return tankService.updateTank(updatedTank);
     }
 
