@@ -5,6 +5,7 @@ import {Tank} from "../model/TankModel";
 import {Fish} from "../model/FishModel";
 import axios from "axios";
 import TemperatureDropdown from "./TemperatureDropdown";
+import WaterTypeRadio from "./WaterTypeRadio";
 
 type Props = {
     tank: Tank[]
@@ -73,19 +74,8 @@ function UpdateTank(props: Props) {
             <div>
                 <input className="input-text-field" type="text" value={tankName}
                        onChange={onChangeHandlerSetTankName}/>
-                <div className="radio-buttons">
-                    <label className="radio-button">
-                        <input name="option" type="radio" value="Süßwasser" checked={waterType === "Süßwasser"}
-                               onChange={onChangeHandlerSetWaterType}/>
-                        <div className="radio-circle"></div>
-                        <span className="radio-label">Süßwasser</span>
-                    </label>
-                    <label className="radio-button">
-                        <input name="option" type="radio" value="Salzwasser" checked={waterType === "Salzwasser"}
-                               onChange={onChangeHandlerSetWaterType}/>
-                        <div className="radio-circle"></div>
-                        <span className="radio-label">Salzwasser</span>
-                    </label>
+                <div>
+                    <WaterTypeRadio onChange={onChangeHandlerSetWaterType} value={waterType}/>
                 </div>
                 <div>
                     <TemperatureDropdown value={tankTemperature} onChange={onChangeHandlerSetTankTemperature}/>

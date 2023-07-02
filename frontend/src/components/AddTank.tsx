@@ -6,6 +6,7 @@ import {useNavigate} from "react-router-dom";
 import {Fish} from "../model/FishModel";
 import TemperatureDropdown from "./TemperatureDropdown";
 import useInputValues from "../hooks/UseInputValues";
+import WaterTypeRadio from "./WaterTypeRadio";
 
 type Props= {
     getAllTanks: () => void
@@ -64,28 +65,19 @@ function AddTank(props:Props) {
             <div>
                 <input className="input-text-field" placeholder="Name your tank" type="text" value={tankName}
                        onChange={onChangeHandlerSetTankName}/>
-                <div className="radio-buttons">
-                    <label className="radio-button">
-                        <input name="option" type="radio" value="Süßwasser" checked={waterType === "Süßwasser"}
-                               onChange={onChangeHandlerSetWaterType}/>
-                        <div className="radio-circle"></div>
-                        <span className="radio-label">Süßwasser</span>
-                    </label>
-                    <label className="radio-button">
-                        <input name="option" type="radio" value="Salzwasser" checked={waterType === "Salzwasser"}
-                               onChange={onChangeHandlerSetWaterType}/>
-                        <div className="radio-circle"></div>
-                            <span className="radio-label">Salzwasser</span>
-                    </label>
+                <div>
+                    <WaterTypeRadio onChange={onChangeHandlerSetWaterType} value={waterType}/>
                 </div>
                 <div>
                     <TemperatureDropdown value={tankTemperature} onChange={onChangeHandlerSetTankTemperature}/>
                 </div>
                 <div>
-                <input className="input-number" type="number"  placeholder="Tank size in litres" value={tankSize !== 0 ? tankSize : ""} onChange={onChangeHandlerSetTankSize}/>
+                    <input className="input-number" type="number" placeholder="Tank size in litres"
+                           value={tankSize !== 0 ? tankSize : ""} onChange={onChangeHandlerSetTankSize}/>
                 </div>
                 <div>
-                    <input className="input-range" type="range" min="5" max="8.5" step="0.1"  value={tankPh} onChange={onChangeHandlerSetTankPh}/>
+                    <input className="input-range" type="range" min="5" max="8.5" step="0.1" value={tankPh}
+                           onChange={onChangeHandlerSetTankPh}/>
                     <br/>
                     <span id="range-value">{tankPh} pH</span>
                 </div>
