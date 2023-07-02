@@ -1,10 +1,11 @@
-import React, {ChangeEvent, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import "../stylesheets/AddTank.css"
 import "../stylesheets/AddTankModal.css"
 import {useNavigate} from "react-router-dom";
 import {Fish} from "../model/FishModel";
 import TemperatureDropdown from "./TemperatureDropdown";
+import useInputValues from "../hooks/UseInputValues";
 
 type Props= {
     getAllTanks: () => void
@@ -14,60 +15,21 @@ type Props= {
 
 function AddTank(props:Props) {
 
-    const [tankName, setTankName] = useState<string>("")
-    const [waterType, setWaterType] = useState<string>("")
-    const [tankSize, setTankSize] = useState<number>(0)
-    const [tankTemperature, setTankTemperature] = useState<number>(0);
+    const {
+        tankName, setTankName, toggleModal, onChangeHandlerSetTankName,
+        waterType, setWaterType, onChangeHandlerSetWaterType,
+        tankSize, setTankSize, onChangeHandlerSetTankSize,
+        tankTemperature, setTankTemperature, onChangeHandlerSetTankTemperature,
+        tankPh, setTankPh, onChangeHandlerSetTankPh,
+        modal, setModal
+    } = useInputValues()
     const [selectedFish, setSelectedFish] = useState<Fish[]>([]);
-    const [tankPh, setTankPh] = useState<number>(0)
     const navigateTo = useNavigate();
-    const [modal, setModal] = useState(false);
-
-
-    const toggleModal = () => {
-        setModal(!modal);
-        console.log("ich wurde aufgerufen")
-    };
 
     useEffect(() => {
         props.getAllFish();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-
-
-    function onChangeHandlerSetTankName(e: ChangeEvent<HTMLInputElement>) {
-        setTankName(e.target.value)
-    }
-
-    function onChangeHandlerSetWaterType(e: ChangeEvent<HTMLInputElement>) {
-        setWaterType(e.target.value)
-    }
-
-    function onChangeHandlerSetTankSize(e:ChangeEvent<HTMLInputElement>) {
-        const value = Number(e.target.value);
-        setTankSize(value);
-    }
-
-    function onChangeHandlerSetTankPh(e: ChangeEvent<HTMLInputElement>) {
-        const value = Number(e.target.value);
-        setTankPh(value);
-    }
-
-    function onChangeHandlerSetTankTemperature(e: ChangeEvent<HTMLSelectElement>) {
-        const value = Number(e.target.value);
-        setTankTemperature(value);
-    }
-
-    const handleFishSelection = (fish: Fish) => {
-        const isSelected = selectedFish.some(selected => selected.id === fish.id);
-
-        if (isSelected) {
-            const updatedFish = selectedFish.filter(selected => selected.id !== fish.id);
-            setSelectedFish(updatedFish);
-        } else {
-            setSelectedFish([...selectedFish, fish]);
-        }
-    };
 
     function addTank() {
         const newTank = {
@@ -81,6 +43,17 @@ function AddTank(props:Props) {
         axios.post("/api/tank/new-tank", newTank)
             .then(() => navigateTo("/my-tanks"))
     }
+
+    const handleFishSelection = (fish: Fish) => {
+        const isSelected = selectedFish.some(selected => selected.id === fish.id);
+
+        if (isSelected) {
+            const updatedFish = selectedFish.filter(selected => selected.id !== fish.id);
+            setSelectedFish(updatedFish);
+        } else {
+            setSelectedFish([...selectedFish, fish]);
+        }
+    };
 
     function cancelAddTank() {
         navigateTo("/my-tanks")
