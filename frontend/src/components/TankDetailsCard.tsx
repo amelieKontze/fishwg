@@ -30,7 +30,7 @@ function TankDetailsCard(props: Props) {
     };
 
     function updateTank() {
-        navigateTo("/update-tank")
+        navigateTo("/update-tank/" + actualTank?.id)
     }
 
     return (

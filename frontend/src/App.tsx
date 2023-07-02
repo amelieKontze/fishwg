@@ -34,7 +34,7 @@ function App() {
                 <Route path="/new-tank"
                        element={<AddTank getAllTanks={getAllTanks} allFish={fishList} getAllFish={getAllFish}/>}/>
                 <Route path="/my-tanks/:id" element={<TankDetailsCard allTanks={tankList}/>}/>
-                <Route path="/update-tank" element={<UpdateTank allFish={fishList} tank={tankList}/>}/>
+                <Route path="/update-tank/:id" element={<UpdateTank allFish={fishList} tank={tankList}/>}/>
             </Routes>
         </div>
 

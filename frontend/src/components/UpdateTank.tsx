@@ -15,7 +15,7 @@ function UpdateTank(props: Props) {
 
     const params = useParams()
     const id = params.id
-    const tankToUpdate = props.tank.find(currentTank => currentTank.id)
+    const tankToUpdate = props.tank.find(currentTank => currentTank.id === id)
     const {
         tankName, setTankName, toggleModal, onChangeHandlerSetTankName,
         waterType, setWaterType, onChangeHandlerSetWaterType,
@@ -52,6 +52,7 @@ function UpdateTank(props: Props) {
 
     function updateTank() {
         const updatedTank = {
+            id: tankToUpdate?.id ?? '',
             name: tankName,
             waterType: waterType,
             tankSizeInLitres: tankSize,
@@ -59,7 +60,7 @@ function UpdateTank(props: Props) {
             tankPh: tankPh,
             residentFish: selectedFish
         }
-        axios.put("/api/tank/update-tank", updatedTank)
+        axios.put("/api/tank/update-tank/" + tankToUpdate?.id, updatedTank)
             .then(() => navigateTo(-1))
     }
 
