@@ -61,7 +61,7 @@ function UpdateTank(props: Props) {
             residentFish: selectedFish
         }
         axios.put("/api/tank/update-tank/" + tankToUpdate?.id, updatedTank)
-            .then(() => navigateTo(-1))
+            .then(n => navigateTo("/my-tanks"))
     }
 
     function cancelUpdateTank() {
@@ -125,7 +125,7 @@ function UpdateTank(props: Props) {
                                     ))}
                                 </div>
                                 <button className="button" onClick={toggleModal}>
-                                    Add Fish
+                                    update fish
                                 </button>
                             </div>
                         </div>
