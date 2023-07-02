@@ -1,48 +1,30 @@
 import React, {useEffect, useState} from 'react';
-import axios from "axios";
-import "../stylesheets/AddTank.css"
-import "../stylesheets/AddTankModal.css"
-import {useNavigate} from "react-router-dom";
-import {Fish} from "../model/FishModel";
-import TemperatureDropdown from "./TemperatureDropdown";
+import {useNavigate, useParams} from "react-router-dom";
 import useInputValues from "../hooks/UseInputValues";
+import {Tank} from "../model/TankModel";
+import {Fish} from "../model/FishModel";
+import axios from "axios";
+import TemperatureDropdown from "./TemperatureDropdown";
 
-type Props= {
-    getAllTanks: () => void
-    getAllFish: () => void
+type Props = {
+    tank: Tank[]
     allFish: Fish[]
 }
 
-function AddTank(props:Props) {
+function UpdateTank(props: Props) {
 
+    const params = useParams()
+    const id = params.id
+    const tankToUpdate = props.tank.find(currentTank => currentTank.id)
     const {
-        tankName, toggleModal, onChangeHandlerSetTankName,
-        waterType, onChangeHandlerSetWaterType,
-        tankSize, onChangeHandlerSetTankSize,
-        tankTemperature, onChangeHandlerSetTankTemperature,
-        tankPh, onChangeHandlerSetTankPh,
+        tankName, setTankName, toggleModal, onChangeHandlerSetTankName,
+        waterType, setWaterType, onChangeHandlerSetWaterType,
+        tankSize, setTankSize, onChangeHandlerSetTankSize,
+        tankTemperature, setTankTemperature, onChangeHandlerSetTankTemperature,
+        tankPh, setTankPh, onChangeHandlerSetTankPh,
         modal
     } = useInputValues()
     const [selectedFish, setSelectedFish] = useState<Fish[]>([]);
-    const navigateTo = useNavigate();
-
-    useEffect(() => {
-        props.getAllFish();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
-    function addTank() {
-        const newTank = {
-            name: tankName,
-            waterType: waterType,
-            tankSizeInLitres: tankSize,
-            tankTemperature: tankTemperature,
-            tankPh: tankPh,
-            residentFish: selectedFish
-        }
-        axios.post("/api/tank/new-tank", newTank)
-            .then(() => navigateTo("/my-tanks"))
-    }
 
     const handleFishSelection = (fish: Fish) => {
         const isSelected = selectedFish.some(selected => selected.id === fish.id);
@@ -55,14 +37,40 @@ function AddTank(props:Props) {
         }
     };
 
-    function cancelAddTank() {
-        navigateTo("/my-tanks")
+    const navigateTo = useNavigate()
+
+    useEffect(() => {
+        if (tankToUpdate) {
+            setTankName(tankToUpdate.name)
+            setWaterType(tankToUpdate.waterType)
+            setTankSize(tankToUpdate.tankSizeInLitres)
+            setTankTemperature(tankToUpdate.tankTemperature)
+            setTankPh(tankToUpdate.tankPh)
+            setSelectedFish(tankToUpdate.residentFish)
+        }
+    }, [tankToUpdate])
+
+    function updateTank() {
+        const updatedTank = {
+            name: tankName,
+            waterType: waterType,
+            tankSizeInLitres: tankSize,
+            tankTemperature: tankTemperature,
+            tankPh: tankPh,
+            residentFish: selectedFish
+        }
+        axios.put("/api/tank/update-tank", updatedTank)
+            .then(() => navigateTo(-1))
+    }
+
+    function cancelUpdateTank() {
+        navigateTo(-1)
     }
 
     return (
         <div className="new-tank">
             <div>
-                <input className="input-text-field" placeholder="Name your tank" type="text" value={tankName}
+                <input className="input-text-field" type="text" value={tankName}
                        onChange={onChangeHandlerSetTankName}/>
                 <div className="radio-buttons">
                     <label className="radio-button">
@@ -75,29 +83,31 @@ function AddTank(props:Props) {
                         <input name="option" type="radio" value="Salzwasser" checked={waterType === "Salzwasser"}
                                onChange={onChangeHandlerSetWaterType}/>
                         <div className="radio-circle"></div>
-                            <span className="radio-label">Salzwasser</span>
+                        <span className="radio-label">Salzwasser</span>
                     </label>
                 </div>
                 <div>
                     <TemperatureDropdown value={tankTemperature} onChange={onChangeHandlerSetTankTemperature}/>
                 </div>
                 <div>
-                <input className="input-number" type="number"  placeholder="Tank size in litres" value={tankSize !== 0 ? tankSize : ""} onChange={onChangeHandlerSetTankSize}/>
+                    <input className="input-number" type="number" value={tankSize !== 0 ? tankSize : ""}
+                           onChange={onChangeHandlerSetTankSize}/>
                 </div>
                 <div>
-                    <input className="input-range" type="range" min="5" max="8.5" step="0.1"  value={tankPh} onChange={onChangeHandlerSetTankPh}/>
+                    <input className="input-range" type="range" min="5" max="8.5" step="0.1" value={tankPh}
+                           onChange={onChangeHandlerSetTankPh}/>
                     <br/>
                     <span id="range-value">{tankPh} pH</span>
                 </div>
                 <button className="button" onClick={toggleModal}>
-                    Add Fish
+                    change fish
                 </button>
                 <div>
                     {modal && (
                         <div className="modal">
                             <div onClick={toggleModal} className="overlay"></div>
                             <div className="modal-content">
-                                <h3>Add Fish to Tank</h3>
+                                <h3>update fish</h3>
                                 <div className="gallery">
                                     {props.allFish.map(fish => (
                                         <div key={fish.id} className="fish-card" id="add-fish-card">
@@ -121,12 +131,12 @@ function AddTank(props:Props) {
                     )}
                 </div>
                 <div className="two-buttons">
-                    <button onClick={addTank} className="button">Add</button>
-                    <button onClick={cancelAddTank} className="button">cancel</button>
+                    <button onClick={updateTank} className="button">update</button>
+                    <button onClick={cancelUpdateTank} className="button">cancel</button>
                 </div>
             </div>
         </div>
     );
 }
 
-export default AddTank;
+export default UpdateTank;
