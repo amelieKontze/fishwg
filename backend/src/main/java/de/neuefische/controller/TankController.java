@@ -28,4 +28,9 @@ public class TankController {
         tankService.deleteTank(id);
     }
 
+    @PutMapping("/update-tank/{id}")
+    public Tank updateTank(@PathVariable String id, @RequestBody Tank updatedTank) {
+        return tankService.updateTank(updatedTank);
+    }
+
 }

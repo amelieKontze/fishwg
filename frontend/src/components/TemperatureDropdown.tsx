@@ -1,8 +1,8 @@
 import React, {ChangeEvent} from 'react';
 
 type Props = {
-    value: number;
-    onChange: (e: ChangeEvent<HTMLSelectElement>) => void;
+    value: number
+    onChange: (e: ChangeEvent<HTMLSelectElement>) => void
 };
 
 const TemperatureDropdown: React.FC<Props> = ({value, onChange}) => {

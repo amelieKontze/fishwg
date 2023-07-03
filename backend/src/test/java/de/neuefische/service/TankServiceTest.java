@@ -70,4 +70,15 @@ class TankServiceTest {
         //then
         verify(tankRepo).deleteById(testId);
     }
+
+    @Test
+    void updateTank_shouldUpdateExistingTank() {
+        //given
+        when(tankRepo.save(tank)).thenReturn(tank);
+        //when
+        Tank actual = tankService.updateTank(tank);
+        //then
+        verify(tankRepo).save(tank);
+        assertEquals(tank, actual);
+    }
 }

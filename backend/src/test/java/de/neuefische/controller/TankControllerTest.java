@@ -85,4 +85,54 @@ class TankControllerTest {
                 .andExpect(content().json("[]"));
 
     }
+
+    @Test
+    @DirtiesContext
+    void updateTank_shouldUpdateInformationOnExistingTank() throws Exception {
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/api/tank/new-tank")
+                        .contentType("application/json")
+                        .content("""
+                                    {
+                                     "name": "nano",
+                                     "waterType": "Süßwasser",
+                                     "tankSizeInLitres": 45,
+                                     "tankTemperature": 23,
+                                     "tankPh": 6.7 , 
+                                     "residentFish": []
+                                   }
+                                """))
+                .andExpect(status().isOk())
+                .andReturn();
+
+        String content = result.getResponse().getContentAsString();
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        Tank tank = objectMapper.readValue(content, Tank.class);
+
+        mockMvc.perform(MockMvcRequestBuilders.put("/api/tank/update-tank/" + tank.getId())
+                        .contentType("application/json")
+                        .content("""
+                                { 
+                                         "name": "nano",
+                                         "waterType": "Süßwasser",
+                                         "tankSizeInLitres": 450,
+                                         "tankTemperature": 23,
+                                         "tankPh": 6.7 , 
+                                         "residentFish": []
+                                       }
+                                    """))
+                .andExpect(status().isOk())
+                .andExpect(content().json("""
+                        {
+                           "name": "nano",
+                           "waterType": "Süßwasser",
+                           "tankSizeInLitres": 450,
+                           "tankTemperature": 23,
+                           "tankPh": 6.7 , 
+                           "residentFish": []
+                         }
+                          """));
+    }
+
+
 }

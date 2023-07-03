@@ -27,8 +27,11 @@ function TankDetailsCard(props: Props) {
 
     const toggleModal = () => {
         setModal(!modal);
-        console.log("ich wurde aufgerufen")
     };
+
+    function updateTank() {
+        navigateTo("/update-tank/" + actualTank?.id)
+    }
 
     return (
         <div className="tank-card" id="tank-details">
@@ -44,6 +47,7 @@ function TankDetailsCard(props: Props) {
                 </div>
             ))}</div>
             <button className="button" onClick={onChangeHandlerBack}>zurück</button>
+            <button className="button" onClick={updateTank}>bearbeiten</button>
             <button className="button" id="delete-button" onClick={toggleModal}>Löschen</button>
             <div>
                 {modal && (
@@ -52,7 +56,7 @@ function TankDetailsCard(props: Props) {
                         <div className="modal-content">
                             <h3>Are you sure you want to delete this tank?</h3>
                             <button className="button" id="delete-button" onClick={deleteTank}>Yes</button>
-                            <button className="button" onClick={onChangeHandlerBack}>No</button>
+                            <button className="button" onClick={toggleModal}>No</button>
                         </div>
                     </div>
                 )}
