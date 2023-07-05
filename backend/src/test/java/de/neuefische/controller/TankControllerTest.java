@@ -6,11 +6,13 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
@@ -21,6 +23,7 @@ class TankControllerTest {
     MockMvc mockMvc;
 
     @Test
+    @WithMockUser(username = "user", password = "123")
     void getAllTanks_shouldReturnAllTanksFromDB() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/api/tank/my-tanks"))
                 .andExpect(status().isOk())
@@ -29,6 +32,7 @@ class TankControllerTest {
 
     @Test
     @DirtiesContext
+    @WithMockUser(username = "user", password = "123")
     void addTank_shouldAddNewTankToDB() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.post("/api/tank/new-tank")
                         .contentType("application/json")
@@ -41,7 +45,8 @@ class TankControllerTest {
                                      "tankPh": 6.7 , 
                                      "residentFish": []
                                    }
-                                """))
+                                """)
+                        .with(csrf()))
                 .andExpect(status().isOk())
                 .andExpect(content().json("""
                             {
@@ -57,6 +62,7 @@ class TankControllerTest {
 
     @Test
     @DirtiesContext
+    @WithMockUser(username = "user", password = "123")
     void deleteTank_shouldRemoveTankFromDB() throws Exception {
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/api/tank/new-tank")
                         .contentType("application/json")
@@ -69,7 +75,8 @@ class TankControllerTest {
                                      "tankPh": 6.7 , 
                                      "residentFish": []
                                    }
-                                """))
+                                """)
+                        .with(csrf()))
                 .andExpect(status().isOk())
                 .andReturn();
 
@@ -78,7 +85,8 @@ class TankControllerTest {
         ObjectMapper objectMapper = new ObjectMapper();
         Tank tank = objectMapper.readValue(content, Tank.class);
 
-        mockMvc.perform(MockMvcRequestBuilders.delete("/api/tank/delete/" + tank.getId()))
+        mockMvc.perform(MockMvcRequestBuilders.delete("/api/tank/delete/" + tank.getId())
+                        .with(csrf()))
                 .andExpect(status().isOk());
         mockMvc.perform(MockMvcRequestBuilders.get("/api/tank/my-tanks"))
                 .andExpect(status().isOk())
@@ -88,6 +96,7 @@ class TankControllerTest {
 
     @Test
     @DirtiesContext
+    @WithMockUser(username = "user", password = "123")
     void updateTank_shouldUpdateInformationOnExistingTank() throws Exception {
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/api/tank/new-tank")
                         .contentType("application/json")
@@ -100,7 +109,8 @@ class TankControllerTest {
                                      "tankPh": 6.7 , 
                                      "residentFish": []
                                    }
-                                """))
+                                """)
+                        .with(csrf()))
                 .andExpect(status().isOk())
                 .andReturn();
 
@@ -120,7 +130,8 @@ class TankControllerTest {
                                          "tankPh": 6.7 , 
                                          "residentFish": []
                                        }
-                                    """))
+                                    """)
+                        .with(csrf()))
                 .andExpect(status().isOk())
                 .andExpect(content().json("""
                         {
