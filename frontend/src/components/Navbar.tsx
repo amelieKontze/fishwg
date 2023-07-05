@@ -19,6 +19,9 @@ function Navbar() {
                 <li>
                     <Link to="/my-tanks" className="nav">MyTanks</Link>
                 </li>
+                <li>
+                    <Link to="/login" className="nav">Login</Link>
+                </li>
             </ul>
 
             </nav>

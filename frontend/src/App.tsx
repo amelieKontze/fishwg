@@ -13,6 +13,7 @@ import TankDetailsCard from "./components/TankDetailsCard";
 import UpdateTank from "./components/UpdateTank";
 import Login from "./security/Login";
 import useLogin from "./security/UseLogin";
+import ProtectedRoutes from "./security/ProtectedRoutes";
 
 
 function App() {
@@ -38,12 +39,15 @@ function App() {
                 <Route path="/" element={<Home/>}/>
                 <Route path="/gallery" element={<Gallery allFish={fishList} getAllFish={getAllFish}/>}/>
                 <Route path="/find-fish" element={<FindFish allFish={fishList} getAllFish={getAllFish}/>}/>
-                <Route path="/my-tanks" element={<MyTanks allTanks={tankList} getAllTanks={getAllTanks}/>}/>
-                <Route path="/new-tank"
-                       element={<AddTank getAllTanks={getAllTanks} allFish={fishList} getAllFish={getAllFish}/>}/>
-                <Route path="/my-tanks/:id" element={<TankDetailsCard allTanks={tankList}/>}/>
-                <Route path="/update-tank/:id"
-                       element={<UpdateTank allFish={fishList} tank={tankList} getAllFish={getAllFish}/>}/>
+
+                <Route element={<ProtectedRoutes user={user}/>}>
+                    <Route path="/my-tanks" element={<MyTanks allTanks={tankList} getAllTanks={getAllTanks}/>}/>
+                    <Route path="/new-tank"
+                           element={<AddTank getAllTanks={getAllTanks} allFish={fishList} getAllFish={getAllFish}/>}/>
+                    <Route path="/my-tanks/:id" element={<TankDetailsCard allTanks={tankList}/>}/>
+                    <Route path="/update-tank/:id"
+                           element={<UpdateTank allFish={fishList} tank={tankList} getAllFish={getAllFish}/>}/>
+                </Route>
             </Routes>
         </div>
 

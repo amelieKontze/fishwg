@@ -8,9 +8,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document("user")
-public class User {
+@Document("User")
+public class UserModel {
+
     private String id;
     private String username;
     private String password;
+
 }
