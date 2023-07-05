@@ -1,0 +1,9 @@
+[
+  {
+    "_id": {
+      "$oid": "64a41830b0e93b0b8964c4e3"
+    },
+    "username": "test",
+    "password": "$argon2id$v=19$m=16384,t=2,p=1$SKgeR/ezt2s0xksEBhri7w$3burcSEMnpkXQt9yrub7INoGd85BgaK0HAgCshKklNU"
+  }
+]
