@@ -8,6 +8,7 @@ import TemperatureDropdown from "./TemperatureDropdown";
 import useInputValues from "../hooks/UseInputValues";
 import WaterTypeRadio from "./WaterTypeRadio";
 import SelectFishGallery from "./SelectFishGallery";
+import FishCard from "./FishCard";
 
 type Props= {
     getAllTanks: () => void
@@ -25,6 +26,15 @@ function AddTank(props:Props) {
         tankPh, onChangeHandlerSetTankPh,
         modal
     } = useInputValues()
+
+    const filterFish = props.allFish.filter((fish) => {
+        const waterTypeMatch = waterType === '' || fish.waterType.toLowerCase() === waterType.toLowerCase();
+        const tankSizeMatch = tankSize === 0 || fish.minTankSizeInLitres <= tankSize;
+        const temperatureMatch = tankTemperature === 0 || (fish.minTemperature <= tankTemperature && fish.maxTemperature >= tankTemperature);
+        const phMatch = tankPh === 0 || (fish.minPh <= tankPh && fish.maxPh >= tankPh);
+        return waterTypeMatch && tankSizeMatch && temperatureMatch && phMatch;
+    });
+
     const [selectedFish, setSelectedFish] = useState<Fish[]>([]);
     const navigateTo = useNavigate();
 
@@ -32,6 +42,20 @@ function AddTank(props:Props) {
         props.getAllFish();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    let showFilteredFish;
+
+    if (filterFish.length > 0) {
+        showFilteredFish = (
+            <div className="gallery">
+                {filterFish.map(fish => <FishCard key={fish.id} fish={fish}/>)}
+            </div>
+        );
+    } else if (waterType || tankSize !== 0 || tankTemperature !== 0 || tankPh !== 0) {
+        showFilteredFish = (
+            <div className="no-fish-found">No fish found</div>
+        );
+    }
 
     const handleFishSelection = (fish: Fish) => {
         const isSelected = selectedFish.some((selected) => selected.id === fish.id);
@@ -92,9 +116,16 @@ function AddTank(props:Props) {
                             <div className="modal-content">
                                 <h3>Add Fish to Tank</h3>
                                 <div>
-                                    <SelectFishGallery getAllFish={props.getAllFish} allFish={props.allFish}
-                                                       handleFishSelection={handleFishSelection}
-                                                       selectedFish={selectedFish}/>
+                                    {props.allFish ? (
+                                        <SelectFishGallery
+                                            getAllFish={props.getAllFish}
+                                            allFish={filterFish}
+                                            handleFishSelection={handleFishSelection}
+                                            selectedFish={selectedFish}
+                                        />
+                                    ) : (
+                                        <div>No fish found</div>
+                                    )}
                                 </div>
                                 <button className="button" onClick={toggleModal}>
                                     Add Fish
