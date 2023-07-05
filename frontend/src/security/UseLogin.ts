@@ -29,7 +29,15 @@ function UseLogin() {
         })
     }
 
-    return {login, getUsername, user}
+    function logout() {
+        return axios.post("/user/logout")
+            .then(() => {
+                setUser(undefined);
+                navigateTo("/")
+            })
+    }
+
+    return {login, getUsername, user, logout}
 }
 
 export default UseLogin;

@@ -1,5 +1,6 @@
 package de.neuefische.security;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +20,12 @@ public class UserController {
 
     @PostMapping("/login")
     public void login() {
+    }
+
+    @PostMapping("/logout")
+    public void logout(HttpSession httpSession) {
+        httpSession.invalidate();
+        SecurityContextHolder.clearContext();
     }
 }
 
