@@ -14,6 +14,7 @@ import UpdateTank from "./components/UpdateTank";
 import Login from "./security/Login";
 import useLogin from "./security/UseLogin";
 import ProtectedRoutes from "./security/ProtectedRoutes";
+import SignUp from "./components/SignUp";
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
             <Navbar logout={logout} user={user}/>
             <Routes>
                 <Route path={"/login"} element={<Login login={login}/>}/>
+                <Route path={"/sign-up"} element={<SignUp/>}/>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/gallery" element={<Gallery allFish={fishList} getAllFish={getAllFish}/>}/>
                 <Route path="/find-fish" element={<FindFish allFish={fishList} getAllFish={getAllFish}/>}/>

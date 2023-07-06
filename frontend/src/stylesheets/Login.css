@@ -14,3 +14,16 @@
     margin-bottom: 100px;
     border-radius: 15px;
 }
+
+.link {
+    color: #016E89;
+    text-decoration: none;
+}
+
+.link:hover {
+    color: #022F40;
+    background-color: #CBECF6;
+    padding: 10px;
+    border-radius: 7px;
+    text-decoration: none;
+}
