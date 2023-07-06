@@ -33,7 +33,7 @@ function App() {
 
     return (
         <div className="App">
-            <Navbar logout={logout}/>
+            <Navbar logout={logout} user={user}/>
             <Routes>
                 <Route path={"/login"} element={<Login login={login}/>}/>
                 <Route path="/" element={<Home/>}/>
