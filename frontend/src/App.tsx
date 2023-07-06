@@ -27,13 +27,13 @@ function App() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
         [])
 
-    const {login, user, getUsername} = useLogin()
+    const {login, user, getUsername, logout} = useLogin()
     const {getAllFish, fishList} = useFish()
     const {getAllTanks, tankList} = useTank()
 
     return (
         <div className="App">
-            <Navbar/>
+            <Navbar logout={logout}/>
             <Routes>
                 <Route path={"/login"} element={<Login login={login}/>}/>
                 <Route path="/" element={<Home/>}/>

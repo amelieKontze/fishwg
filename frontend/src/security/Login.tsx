@@ -16,6 +16,7 @@ function Login(props: Props) {
         props.login(username, password)
             .then(() => {
                     navigateTo("/")
+                    console.log(username)
                 }
             ).catch((error) => {
             console.log("Couldn't log in")
