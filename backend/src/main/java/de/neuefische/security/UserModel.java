@@ -12,7 +12,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class UserModel {
 
     private String id;
+    private String name;
     private String username;
+    private String email;
     private String password;
 
 }

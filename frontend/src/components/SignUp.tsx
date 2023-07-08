@@ -1,15 +1,17 @@
 import React, {ChangeEvent, useState} from 'react';
-import {Link, useNavigate} from "react-router-dom";
+import {Link} from "react-router-dom";
 import "../stylesheets/SignUp.css"
-import axios from "axios";
 
-function SignUp() {
+type Props = {
+    signUp: (name: string, username: string, email: string, password: string) => Promise<void>
+}
+
+function SignUp(props: Props) {
 
     const [name, setName] = useState("");
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const navigateTo = useNavigate()
 
     const onChangeHandlerSetName = (e: ChangeEvent<HTMLInputElement>) => {
         setName(e.target.value);
@@ -27,22 +29,10 @@ function SignUp() {
         setPassword(e.target.value);
     };
 
-    const signUp = () => {
-        const newUser = {
-            name: name,
-            username: username,
-            email: email,
-            password: password
-        };
 
-        axios.post("/user/sign-up", newUser)
-            .then((response) => {
-                navigateTo("/login")
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    };
+    function onChangeHandlerSignUp() {
+        props.signUp(name, username, email, password)
+    }
 
     return (
         <div className="login">
@@ -59,7 +49,7 @@ function SignUp() {
                 <br/>
                 <input className="input-text-field" placeholder={"Password"} type="password" value={password}
                        onChange={onChangeHandlerSetPassword}/>
-                <button className="button" onClick={signUp}>Sign up</button>
+                <button className="button" onClick={onChangeHandlerSignUp}>Sign up</button>
                 <br/>
                 <Link to="/login" className="link">Login</Link>
             </div>
