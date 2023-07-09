@@ -1,6 +1,5 @@
 import React, {ChangeEvent, useState} from 'react';
 import {Link} from "react-router-dom";
-import "../stylesheets/SignUp.css"
 
 type Props = {
     signUp: (name: string, username: string, email: string, password: string) => Promise<void>

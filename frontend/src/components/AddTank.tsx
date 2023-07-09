@@ -8,7 +8,6 @@ import TemperatureDropdown from "./TemperatureDropdown";
 import useInputValues from "../hooks/UseInputValues";
 import WaterTypeRadio from "./WaterTypeRadio";
 import SelectFishGallery from "./SelectFishGallery";
-import FishCard from "./FishCard";
 
 type Props= {
     getAllTanks: () => void
@@ -42,20 +41,6 @@ function AddTank(props:Props) {
         props.getAllFish();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-
-    let showFilteredFish;
-
-    if (filterFish.length > 0) {
-        showFilteredFish = (
-            <div className="gallery">
-                {filterFish.map(fish => <FishCard key={fish.id} fish={fish}/>)}
-            </div>
-        );
-    } else if (waterType || tankSize !== 0 || tankTemperature !== 0 || tankPh !== 0) {
-        showFilteredFish = (
-            <div className="no-fish-found">No fish found</div>
-        );
-    }
 
     const handleFishSelection = (fish: Fish) => {
         const isSelected = selectedFish.some((selected) => selected.id === fish.id);
