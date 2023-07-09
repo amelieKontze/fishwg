@@ -28,7 +28,13 @@ public class UserController {
     }
 
     @PostMapping("/sign-up")
-    public UserModel addUser(@RequestBody UserModel userModel) {
+    public UserModel addUser(@RequestBody UserDTO userDTO) {
+        UserModel userModel = new UserModel();
+        userModel.setName(userDTO.getName());
+        userModel.setUsername(userDTO.getUsername());
+        userModel.setEmail(userDTO.getEmail());
+        userModel.setPassword(userDTO.getPassword());
+
         return userService.addUser(userModel);
     }
 }
