@@ -43,7 +43,8 @@ class TankControllerTest {
                                      "tankSizeInLitres": 45,
                                      "tankTemperature": 23,
                                      "tankPh": 6.7 , 
-                                     "residentFish": []
+                                     "residentFish": [],
+                                     "tankOwner": "Amelie"
                                    }
                                 """)
                         .with(csrf()))
@@ -55,7 +56,8 @@ class TankControllerTest {
                               "tankSizeInLitres": 45,
                               "tankTemperature": 23,
                               "tankPh": 6.7 ,
-                              "residentFish": [] 
+                              "residentFish": [],
+                              "tankOwner": "Amelie" 
                             }
                         """)).andExpect(jsonPath("$.id").isNotEmpty());
     }
@@ -73,7 +75,8 @@ class TankControllerTest {
                                      "tankSizeInLitres": 45,
                                      "tankTemperature": 23,
                                      "tankPh": 6.7 , 
-                                     "residentFish": []
+                                     "residentFish": [],
+                                     "tankOwner": "Amelie"
                                    }
                                 """)
                         .with(csrf()))
@@ -107,7 +110,8 @@ class TankControllerTest {
                                      "tankSizeInLitres": 45,
                                      "tankTemperature": 23,
                                      "tankPh": 6.7 , 
-                                     "residentFish": []
+                                     "residentFish": [],
+                                     "tankOwner": "Amelie"
                                    }
                                 """)
                         .with(csrf()))
@@ -128,7 +132,8 @@ class TankControllerTest {
                                          "tankSizeInLitres": 450,
                                          "tankTemperature": 23,
                                          "tankPh": 6.7 , 
-                                         "residentFish": []
+                                         "residentFish": [],
+                                         "tankOwner": "Amelie"
                                        }
                                     """)
                         .with(csrf()))
@@ -140,7 +145,8 @@ class TankControllerTest {
                            "tankSizeInLitres": 450,
                            "tankTemperature": 23,
                            "tankPh": 6.7 , 
-                           "residentFish": []
+                           "residentFish": [],
+                           "tankOwner": "Amelie"
                          }
                           """));
     }

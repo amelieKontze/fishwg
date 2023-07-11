@@ -36,7 +36,8 @@ class TankServiceTest {
             30,
             27,
             residentFish,
-            7.5
+            7.5,
+            "Amelie"
     );
 
     TankService tankService = new TankService(tankRepo);
