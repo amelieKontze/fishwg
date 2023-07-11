@@ -3,6 +3,8 @@ import {Link, Outlet} from "react-router-dom";
 import "../stylesheets/Navbar.css"
 import {AiOutlineLogin} from "@react-icons/all-files/ai/AiOutlineLogin";
 import {AiOutlineLogout} from "@react-icons/all-files/ai/AiOutlineLogout";
+import {FaBars} from "@react-icons/all-files/fa/FaBars"
+import {AiOutlineArrowUp} from "@react-icons/all-files/ai/AiOutlineArrowUp";
 
 type Props = {
     logout: () => void
@@ -23,11 +25,8 @@ function Navbar(props: Props) {
         <header>
             <nav className={`navbar ${isAccordionOpen ? "open" : ""}`}>
                 <div className="accordion-header" onClick={toggleAccordion}>
-                    <button className="menu-button">
-                    <span className="accordion-icon">
-                    {isAccordionOpen ? "-" : "+"}
-                    </span>
-                        Menu
+                    <button className="accordion-icon menu-button">
+                        {isAccordionOpen ? <AiOutlineArrowUp/> : <FaBars>Menu</FaBars>}
                     </button>
                 </div>
                 <ul className="menu">
