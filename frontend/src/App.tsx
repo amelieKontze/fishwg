@@ -45,7 +45,8 @@ function App() {
                 <Route element={<ProtectedRoutes user={user}/>}>
                     <Route path="/my-tanks" element={<MyTanks allTanks={tankList} getAllTanks={getAllTanks}/>}/>
                     <Route path="/new-tank"
-                           element={<AddTank getAllTanks={getAllTanks} allFish={fishList} getAllFish={getAllFish}/>}/>
+                           element={<AddTank getAllTanks={getAllTanks} allFish={fishList} getAllFish={getAllFish}
+                                             user={user ?? ''}/>}/>
                     <Route path="/my-tanks/:id" element={<TankDetailsCard allTanks={tankList}/>}/>
                     <Route path="/update-tank/:id"
                            element={<UpdateTank allFish={fishList} tank={tankList} getAllFish={getAllFish}/>}/>

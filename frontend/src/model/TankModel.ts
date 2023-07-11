@@ -8,4 +8,5 @@ export type Tank = {
     tankTemperature: number,
     residentFish: Fish[],
     tankPh: number
+    tankOwner: string
 }

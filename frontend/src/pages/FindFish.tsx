@@ -85,6 +85,11 @@ function FindFish(props: Props) {
                     onChange={onChangeHandlerSetFilterName}
                 />
             </div>
+            {/*<label className="switch">
+                <input type="checkbox" className="toggle"/>
+                    <span className="slider"></span>
+                    <span className="card-side"></span>
+            </label>*/}
             <div className="radio-buttons">
                 <label className="radio-button">
                     <input
