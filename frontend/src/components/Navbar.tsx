@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Link, Outlet} from "react-router-dom";
 import "../stylesheets/Navbar.css"
 import {AiOutlineLogin} from "@react-icons/all-files/ai/AiOutlineLogin";
 import {AiOutlineLogout} from "@react-icons/all-files/ai/AiOutlineLogout";
 import {FaBars} from "@react-icons/all-files/fa/FaBars"
 import {AiOutlineArrowUp} from "@react-icons/all-files/ai/AiOutlineArrowUp";
+import useAccordion from "../hooks/UseAccordion";
 
 type Props = {
     logout: () => void
@@ -15,11 +16,10 @@ function Navbar(props: Props) {
 
     const isLoggedIn = !!props.user
 
-    const [isAccordionOpen, setIsAccordionOpen] = useState(false);
-
-    function toggleAccordion() {
-        setIsAccordionOpen(!isAccordionOpen);
-    }
+    const {
+        toggleAccordion,
+        isAccordionOpen
+    } = useAccordion()
 
     return (
         <header>
