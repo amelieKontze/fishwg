@@ -11,7 +11,9 @@
 }
 
 .find-fish-accordion {
-
+    margin: 10px;
+    border-radius: 15px;
+    background-color: #7DD0E7;
 }
 
 /*

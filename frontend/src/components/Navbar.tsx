@@ -25,7 +25,7 @@ function Navbar(props: Props) {
         <header>
             <nav className={`navbar ${isAccordionOpen ? "open" : ""}`}>
                 <div className="accordion-header" onClick={toggleAccordion}>
-                    <button className="accordion-icon menu-button">
+                    <button className="menu-button">
                         {isAccordionOpen ? <AiOutlineArrowUp/> : <FaBars>Menu</FaBars>}
                     </button>
                 </div>
