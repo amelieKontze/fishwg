@@ -1,5 +1,5 @@
 import React, {ChangeEvent, useState} from 'react';
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import "../stylesheets/Login.css"
 
 type Props = {
@@ -41,6 +41,8 @@ function Login(props: Props) {
                 <input className="input-text-field" placeholder="Password" type="password" value={password}
                        onChange={onChangeHandlerPassword}/>
                 <button className="button" onClick={login}>Login</button>
+                <br/>
+                <Link to="/sign-up" className="link">Sign Up</Link>
             </div>
         </div>
     );

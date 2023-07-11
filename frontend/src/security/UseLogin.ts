@@ -37,7 +37,17 @@ function UseLogin() {
             })
     }
 
-    return {login, getUsername, user, logout}
+    function signUp(name: string, username: string, email: string, password: string): Promise<void> {
+        return axios.post("/user/sign-up", {name, username, email, password})
+            .then((response) => {
+                navigateTo("/login")
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
+
+    return {login, getUsername, user, logout, signUp}
 }
 
 export default UseLogin;

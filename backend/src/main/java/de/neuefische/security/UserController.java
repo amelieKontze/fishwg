@@ -3,15 +3,14 @@ package de.neuefische.security;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/user")
 @RequiredArgsConstructor
 public class UserController {
+
+    private final UserService userService;
 
     @GetMapping("/me")
     public String getUsername() {
@@ -26,6 +25,17 @@ public class UserController {
     public void logout(HttpSession httpSession) {
         httpSession.invalidate();
         SecurityContextHolder.clearContext();
+    }
+
+    @PostMapping("/sign-up")
+    public UserModel addUser(@RequestBody UserDTO userDTO) {
+        UserModel userModel = new UserModel();
+        userModel.setName(userDTO.getName());
+        userModel.setUsername(userDTO.getUsername());
+        userModel.setEmail(userDTO.getEmail());
+        userModel.setPassword(userDTO.getPassword());
+
+        return userService.addUser(userModel);
     }
 }
 
