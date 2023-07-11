@@ -67,7 +67,6 @@ header {
     cursor: pointer;
     appearance: none;
     -webkit-appearance: none;
-    position: fixed;
 }
 
 .menu-button:hover {
