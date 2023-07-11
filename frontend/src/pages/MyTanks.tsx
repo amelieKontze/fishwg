@@ -7,10 +7,12 @@ import {useNavigate} from "react-router-dom";
 type Props= {
     getAllTanks: () => void
     allTanks: Tank[]
+    user: string
 }
 function MyTanks(props:Props) {
 
     const navigateTo = useNavigate();
+    const userTanks = props.allTanks.filter(tank => tank.tankOwner === props.user)
 
     useEffect(() => {
         props.getAllTanks()
@@ -28,7 +30,7 @@ function MyTanks(props:Props) {
             </div>
             <button onClick={addNewTank} className="button">Add Tank</button>
             <div className="tanks">
-                {props.allTanks.map(tank => <TankCard key={tank.id} tank={tank}/>)}
+                {userTanks.map(tank => <TankCard key={tank.id} tank={tank}/>)}
             </div>
         </div>
     );

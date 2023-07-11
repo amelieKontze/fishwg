@@ -30,7 +30,7 @@ function SignUp(props: Props) {
         setPassword(e.target.value);
     };
 
-    const onChangeHandlerSignUp = (e: FormEvent<HTMLButtonElement>) => {
+    function onChangeHandlerSignUp(e: FormEvent<HTMLButtonElement>) {
         e.preventDefault()
         const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
 
@@ -56,7 +56,7 @@ function SignUp(props: Props) {
 
         setError('');
         props.signUp(name, username, email, password);
-    };
+    }
 
 
     return (

@@ -13,6 +13,7 @@ type Props= {
     getAllTanks: () => void
     getAllFish: () => void
     allFish: Fish[]
+    user: string
 }
 
 function AddTank(props:Props) {
@@ -60,7 +61,8 @@ function AddTank(props:Props) {
             tankSizeInLitres: tankSize,
             tankTemperature: tankTemperature,
             tankPh: tankPh,
-            residentFish: selectedFish
+            residentFish: selectedFish,
+            tankOwner: props.user
         }
         axios.post("/api/tank/new-tank", newTank)
             .then(() => navigateTo("/my-tanks"))

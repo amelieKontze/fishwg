@@ -21,4 +21,5 @@ public class Tank {
     private int tankTemperature;
     private List<Fish> residentFish;
     private double tankPh;
+    private String tankOwner;
 }

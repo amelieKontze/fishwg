@@ -10,6 +10,7 @@ function UseLogin() {
         return axios.post("/user/login", undefined, {auth: {username, password}})
             .then((response) => {
                 getUsername()
+                navigateTo("/")
             }).catch((error) => {
                 console.log(error)
             })
@@ -23,7 +24,7 @@ function UseLogin() {
                 username = response.data
                 if (username === "anonymousUser" || username === undefined) {
                     navigateTo("/login")
-                } else navigateTo("/")
+                }
             }).catch(error => {
             console.log(error)
         })
