@@ -43,7 +43,8 @@ function App() {
                 <Route path="/find-fish" element={<FindFish allFish={fishList} getAllFish={getAllFish}/>}/>
 
                 <Route element={<ProtectedRoutes user={user}/>}>
-                    <Route path="/my-tanks" element={<MyTanks allTanks={tankList} getAllTanks={getAllTanks}/>}/>
+                    <Route path="/my-tanks"
+                           element={<MyTanks allTanks={tankList} getAllTanks={getAllTanks} user={user ?? ''}/>}/>
                     <Route path="/new-tank"
                            element={<AddTank getAllTanks={getAllTanks} allFish={fishList} getAllFish={getAllFish}
                                              user={user ?? ''}/>}/>
