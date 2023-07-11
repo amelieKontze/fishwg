@@ -1,6 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Link, Outlet} from "react-router-dom";
 import "../stylesheets/Navbar.css"
+import {AiOutlineLogin} from "@react-icons/all-files/ai/AiOutlineLogin";
+import {AiOutlineLogout} from "@react-icons/all-files/ai/AiOutlineLogout";
 
 type Props = {
     logout: () => void
@@ -11,9 +13,23 @@ function Navbar(props: Props) {
 
     const isLoggedIn = !!props.user
 
+    const [isAccordionOpen, setIsAccordionOpen] = useState(false);
+
+    function toggleAccordion() {
+        setIsAccordionOpen(!isAccordionOpen);
+    }
+
     return (
         <header>
-            <nav className="navbar">
+            <nav className={`navbar ${isAccordionOpen ? "open" : ""}`}>
+                <div className="accordion-header" onClick={toggleAccordion}>
+                    <button className="menu-button">
+                    <span className="accordion-icon">
+                    {isAccordionOpen ? "-" : "+"}
+                    </span>
+                        Menu
+                    </button>
+                </div>
                 <ul className="menu">
                     <li>
                         <Link to="/" className="nav">Home</Link>
@@ -29,19 +45,20 @@ function Navbar(props: Props) {
                     </li>
                     {isLoggedIn ? (
                         <li>
-                            <Link to="/" className="nav" onClick={props.logout}>Logout</Link>
+                            <Link to="/" className="nav" onClick={props.logout}>Logout<AiOutlineLogout/></Link>
                         </li>
                     ) : (
                         <li>
-                            <Link to="/login" className="nav">Login</Link>
+                            <Link to="/login" className="nav">Login<AiOutlineLogin/></Link>
                         </li>
                     )}
                 </ul>
-
             </nav>
-            <Outlet/>
+            {isAccordionOpen && <Outlet/>}
         </header>
     );
 }
 
 export default Navbar;
+
+
