@@ -11,7 +11,7 @@ type Props = {
     allFish: Fish[];
 };
 
-function FindFish(props: Props) {
+function FishGallery(props: Props) {
     const [filterName, setFilterName] = useState<string>('');
     const [filterWaterType, setFilterWaterType] = useState<string>('');
     const [filterOrigin, setFilterOrigin] = useState<string>('');
@@ -89,8 +89,8 @@ function FindFish(props: Props) {
 
     return (
         <>
-            <h1>Find Fish</h1>
-            <button className="find-fish-accordion button" onClick={toggleAccordion}>
+            <h1>Fish Gallery</h1>
+            <button className="find-fish-accordion-button button" onClick={toggleAccordion}>
                 {isAccordionOpen ? <AiOutlineCloseCircle/> : 'Filter Fish'}
             </button>
             <div className="find-fish-accordion">
@@ -203,4 +203,4 @@ function FindFish(props: Props) {
     );
 }
 
-export default FindFish;
+export default FishGallery;

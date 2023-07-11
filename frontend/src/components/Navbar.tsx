@@ -34,10 +34,7 @@ function Navbar(props: Props) {
                         <Link to="/" className="nav">Home</Link>
                     </li>
                     <li>
-                        <Link to="/gallery" className="nav">Gallery</Link>
-                    </li>
-                    <li>
-                        <Link to="/find-fish" className="nav">FindFish</Link>
+                        <Link to="/find-fish" className="nav">Fish Gallery</Link>
                     </li>
                     <li>
                         <Link to="/my-tanks" className="nav">MyTanks</Link>
