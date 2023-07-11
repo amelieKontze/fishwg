@@ -78,6 +78,14 @@ function FindFish(props: Props) {
         setFilterPh(value);
     }
 
+    function clearFilters() {
+        setFilterName('');
+        setFilterWaterType('');
+        setFilterOrigin('');
+        setFilterTankSize(0);
+        setFilterTemperature(0);
+        setFilterPh(0);
+    }
 
     return (
         <>
@@ -182,6 +190,9 @@ function FindFish(props: Props) {
                             />
                             <br/>
                             <span id="range-value">{filterPh} pH</span>
+                            <button className="button" onClick={clearFilters}>
+                                Clear
+                            </button>
                         </div>
                         <br/>
                     </div>

@@ -13,9 +13,11 @@ header {
     justify-content: center;
     align-items: center;
     height: 0px;
-    background-color: rgba(125, 208, 231);
+    background-color: #219EBC;
     overflow: hidden;
     transition: height 0.3s ease-in-out;
+    margin: 10px;
+    border-radius: 15px;
 
 }
 
@@ -75,12 +77,12 @@ header {
 
 .nav {
     text-decoration: none;
-    color: gray;
+    color: #014B69;
     font-weight: bold;
 }
 
 .nav:hover {
-    color: #3b557b;
+    color: #7DD0E7;
     font-weight: bold;
 }
 
