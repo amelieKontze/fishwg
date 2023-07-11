@@ -38,7 +38,7 @@ function App() {
                 <Route path={"/login"} element={<Login login={login}/>}/>
                 <Route path={"/sign-up"} element={<SignUp signUp={signUp}/>}/>
                 <Route path="/" element={<Home/>}/>
-                <Route path="/find-fish" element={<FishGallery allFish={fishList} getAllFish={getAllFish}/>}/>
+                <Route path="/fish-gallery" element={<FishGallery allFish={fishList} getAllFish={getAllFish}/>}/>
 
                 <Route element={<ProtectedRoutes user={user}/>}>
                     <Route path="/my-tanks"

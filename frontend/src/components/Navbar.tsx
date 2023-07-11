@@ -34,7 +34,7 @@ function Navbar(props: Props) {
                         <Link to="/" className="nav">Home</Link>
                     </li>
                     <li>
-                        <Link to="/find-fish" className="nav">Fish Gallery</Link>
+                        <Link to="/fish-gallery" className="nav">Fish Gallery</Link>
                     </li>
                     <li>
                         <Link to="/my-tanks" className="nav">MyTanks</Link>
