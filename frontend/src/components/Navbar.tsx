@@ -44,11 +44,11 @@ function Navbar(props: Props) {
                     </li>
                     {isLoggedIn ? (
                         <li>
-                            <Link to="/" className="nav" onClick={props.logout}>Logout<AiOutlineLogout/></Link>
+                            <Link to="/" className="nav" onClick={props.logout} title="Logout"><AiOutlineLogout/></Link>
                         </li>
                     ) : (
                         <li>
-                            <Link to="/login" className="nav">Login<AiOutlineLogin/></Link>
+                            <Link to="/login" className="nav" title="Login"><AiOutlineLogin/></Link>
                         </li>
                     )}
                 </ul>

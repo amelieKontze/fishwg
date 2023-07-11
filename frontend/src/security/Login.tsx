@@ -33,10 +33,7 @@ function Login(props: Props) {
 
     return (
         <div className="login">
-            <Link to="/" className="LinkHeader">
-                <img className="login-logo" src="/FishWGLogo.png"/>
-            </Link>
-
+            <img className="login-logo" src="/FishWGLogo.png"/>
             <h1>Login</h1>
             <div>
                 <input className="input-text-field" placeholder="Username" type="text" value={username}
