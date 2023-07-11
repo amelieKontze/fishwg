@@ -23,6 +23,7 @@
 }
 
 .modal-content {
+    margin-top: 70px;
     position: relative;
     max-width: 90%;
     max-height: 90%;
@@ -42,17 +43,40 @@
 #add-fish-card {
     background: linear-gradient(120deg, #7DD0E7 60%, #CBECF6 88%);
     color: #022F40;
+    height: 270px;
     border-radius: 15px;
     padding: 5px;
     font-size: 15px;
     line-height: 15px;
 }
 
-img {
+.modal img {
     width: 70px;
 }
 
-/* Responsive-Stile für das Modal */
+.add-fish-modal-button {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 40px;
+    font-weight: bolder;
+    background-color: #014B69;
+}
+
+.close-modal-button {
+    position: fixed;
+    top: 50px;
+    right: 1%;
+    transform: translateX(-50%);
+    height: 40px;
+    font-weight: bolder;
+    background-color: #014B69;
+    border-radius: 100px;
+    width: 40px;
+    z-index: 400;
+}
+
 @media screen and (max-width: 600px) {
     .modal-content {
         padding: 10px;
