@@ -101,6 +101,10 @@ header {
         margin: 10px 0;
     }
 
+    .navbar {
+        height: 0;
+    }
+
     .navbar.open {
         height: auto;
     }
