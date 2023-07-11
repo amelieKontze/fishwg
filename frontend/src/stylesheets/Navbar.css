@@ -60,6 +60,11 @@
     -webkit-appearance: none;
 }
 
+.menu-button:hover {
+    background-color: #016E89;
+    color: #219EBC;
+}
+
 .nav {
     text-decoration: none;
     color: gray;

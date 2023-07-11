@@ -3,6 +3,8 @@ import {Fish} from '../model/FishModel';
 import FishCard from '../components/FishCard';
 import '../stylesheets/FindFish.css';
 import TemperatureDropdown from "../components/TemperatureDropdown";
+import UseAccordion from "../hooks/UseAccordion";
+import {AiOutlineCloseCircle} from "@react-icons/all-files/ai/AiOutlineCloseCircle";
 
 type Props = {
     getAllFish: () => void;
@@ -16,6 +18,8 @@ function FindFish(props: Props) {
     const [filterTankSize, setFilterTankSize] = useState<number>(0);
     const [filterTemperature, setFilterTemperature] = useState<number>(0);
     const [filterPh, setFilterPh] = useState<number>(0);
+
+    const {toggleAccordion, isAccordionOpen} = UseAccordion();
 
     const filteredFish = props.allFish.filter((fish) => {
         const nameMatch = fish.name.toLowerCase().includes(filterName.toLowerCase());
@@ -78,103 +82,108 @@ function FindFish(props: Props) {
     return (
         <>
             <h1>Find Fish</h1>
-            <div>
-                <input
-                    placeholder="Search fish by name"
-                    className="input-text-field"
-                    onChange={onChangeHandlerSetFilterName}
-                />
-            </div>
-            {/*<label className="switch">
-                <input type="checkbox" className="toggle"/>
-                    <span className="slider"></span>
-                    <span className="card-side"></span>
-            </label>*/}
-            <div className="radio-buttons">
-                <label className="radio-button">
-                    <input
-                        name="option-water-type"
-                        type="radio"
-                        value="Süßwasser"
-                        checked={filterWaterType === 'Süßwasser'}
-                        onChange={onChangeHandlerSetFilterWaterType}
-                    />
-                    <div className="radio-circle"></div>
-                    <span className="radio-label">Süßwasser</span>
-                </label>
-                <label className="radio-button">
-                    <input
-                        name="option-water-type"
-                        type="radio"
-                        value="Salzwasser"
-                        checked={filterWaterType === 'Salzwasser'}
-                        onChange={onChangeHandlerSetFilterWaterType}
-                    />
-                    <div className="radio-circle"></div>
-                    <span className="radio-label">Salzwasser</span>
-                </label>
-            </div>
-            <div>
-                <input
-                    className="input-number"
-                    type="number"
-                    placeholder="Tank size in litres"
-                    value={filterTankSize !== 0 ? filterTankSize : ''}
-                    onChange={onChangeHandlerSetFilterTankSize}
-                />
-            </div>
-            <div className="radio-buttons">
-                <label className="radio-button">
-                    <input
-                        name="option-origin"
-                        type="radio"
-                        value="Asien"
-                        checked={filterOrigin === 'Asien'}
-                        onChange={onChangeHandlerSetFilterOrigin}
-                    />
-                    <div className="radio-circle"></div>
-                    <span className="radio-label">Asien</span>
-                </label>
-                <label className="radio-button">
-                    <input
-                        name="option-origin"
-                        type="radio"
-                        value="Amerika"
-                        checked={filterOrigin === 'Amerika'}
-                        onChange={onChangeHandlerSetFilterOrigin}
-                    />
-                    <div className="radio-circle"></div>
-                    <span className="radio-label">Amerika</span>
-                </label>
-                <label className="radio-button">
-                    <input
-                        name="option-origin"
-                        type="radio"
-                        value="Afrika"
-                        checked={filterOrigin === 'Afrika'}
-                        onChange={onChangeHandlerSetFilterOrigin}
-                    />
-                    <div className="radio-circle"></div>
-                    <span className="radio-label">Afrika</span>
-                </label>
-            </div>
-            <div>
-                <TemperatureDropdown value={filterTemperature} onChange={onChangeHandlerSetFilterTemperature}/>
-            </div>
-            <div>
-                <input
-                    className="input-range"
-                    type="range"
-                    min="5"
-                    max="8.5"
-                    step="0.1"
-                    value={filterPh}
-                    onChange={onChangeHandlerSetFilterPh}
-                />
-                <br/>
-                <span id="range-value">{filterPh} pH</span>
-            </div>
-
+            <button className="find-fish-accordion button" onClick={toggleAccordion}>
+                {isAccordionOpen ? <AiOutlineCloseCircle/> : 'Filter Fish'}
+            </button>
+            {isAccordionOpen && (
+                <div className="accordion-content">
+                    <div>
+                        <br/>
+                        <input
+                            placeholder="Search fish by name"
+                            className="input-text-field"
+                            onChange={onChangeHandlerSetFilterName}
+                        />
+                    </div>
+                    <div className="radio-buttons">
+                        <label className="radio-button">
+                            <input
+                                name="option-water-type"
+                                type="radio"
+                                value="Süßwasser"
+                                checked={filterWaterType === 'Süßwasser'}
+                                onChange={onChangeHandlerSetFilterWaterType}
+                            />
+                            <div className="radio-circle"></div>
+                            <span className="radio-label">Süßwasser</span>
+                        </label>
+                        <label className="radio-button">
+                            <input
+                                name="option-water-type"
+                                type="radio"
+                                value="Salzwasser"
+                                checked={filterWaterType === 'Salzwasser'}
+                                onChange={onChangeHandlerSetFilterWaterType}
+                            />
+                            <div className="radio-circle"></div>
+                            <span className="radio-label">Salzwasser</span>
+                        </label>
+                    </div>
+                    <div>
+                        <input
+                            className="input-number"
+                            type="number"
+                            placeholder="Tank size in litres"
+                            value={filterTankSize !== 0 ? filterTankSize : ''}
+                            onChange={onChangeHandlerSetFilterTankSize}
+                        />
+                    </div>
+                    <div className="radio-buttons">
+                        <label className="radio-button">
+                            <input
+                                name="option-origin"
+                                type="radio"
+                                value="Asien"
+                                checked={filterOrigin === 'Asien'}
+                                onChange={onChangeHandlerSetFilterOrigin}
+                            />
+                            <div className="radio-circle"></div>
+                            <span className="radio-label">Asien</span>
+                        </label>
+                        <label className="radio-button">
+                            <input
+                                name="option-origin"
+                                type="radio"
+                                value="Amerika"
+                                checked={filterOrigin === 'Amerika'}
+                                onChange={onChangeHandlerSetFilterOrigin}
+                            />
+                            <div className="radio-circle"></div>
+                            <span className="radio-label">Amerika</span>
+                        </label>
+                        <label className="radio-button">
+                            <input
+                                name="option-origin"
+                                type="radio"
+                                value="Afrika"
+                                checked={filterOrigin === 'Afrika'}
+                                onChange={onChangeHandlerSetFilterOrigin}
+                            />
+                            <div className="radio-circle"></div>
+                            <span className="radio-label">Afrika</span>
+                        </label>
+                    </div>
+                    <div>
+                        <TemperatureDropdown
+                            value={filterTemperature}
+                            onChange={onChangeHandlerSetFilterTemperature}
+                        />
+                    </div>
+                    <div>
+                        <input
+                            className="input-range"
+                            type="range"
+                            min="5"
+                            max="8.5"
+                            step="0.1"
+                            value={filterPh}
+                            onChange={onChangeHandlerSetFilterPh}
+                        />
+                        <br/>
+                        <span id="range-value">{filterPh} pH</span>
+                    </div>
+                </div>
+            )}
             {showFilteredFish}
         </>
     );
