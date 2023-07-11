@@ -8,7 +8,7 @@ function UseAccordion() {
         setIsAccordionOpen(!isAccordionOpen);
     }
 
-    return {toggleAccordion, isAccordionOpen}
+    return {toggleAccordion, isAccordionOpen, setIsAccordionOpen}
 }
 
 export default UseAccordion;

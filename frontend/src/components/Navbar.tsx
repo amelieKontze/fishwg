@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Link, Outlet} from "react-router-dom";
 import "../stylesheets/Navbar.css"
 import {AiOutlineLogin} from "@react-icons/all-files/ai/AiOutlineLogin";
@@ -16,10 +16,22 @@ function Navbar(props: Props) {
 
     const isLoggedIn = !!props.user
 
-    const {
-        toggleAccordion,
-        isAccordionOpen
-    } = useAccordion()
+    const {toggleAccordion, isAccordionOpen, setIsAccordionOpen} = useAccordion()
+
+    useEffect(() => {
+        function handleClickOutside(event: MouseEvent) {
+            const navbar = document.querySelector('.navbar');
+            if (navbar && !navbar.contains(event.target as Node)) {
+                setIsAccordionOpen(false);
+            }
+        }
+
+        document.addEventListener('mousedown', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [setIsAccordionOpen]);
 
     return (
         <header>
