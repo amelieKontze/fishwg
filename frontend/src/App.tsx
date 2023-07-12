@@ -1,10 +1,9 @@
 import React, {useEffect} from 'react';
 import './App.css';
 import {Route, Routes} from "react-router-dom";
-import Gallery from "./pages/Gallery";
 import useFish from "./hooks/UseFish";
 import Navbar from "./components/Navbar";
-import FindFish from "./pages/FindFish";
+import FishGallery from "./pages/FishGallery";
 import MyTanks from "./pages/MyTanks";
 import Home from "./pages/Home";
 import useTank from "./hooks/UseTank";
@@ -39,8 +38,7 @@ function App() {
                 <Route path={"/login"} element={<Login login={login}/>}/>
                 <Route path={"/sign-up"} element={<SignUp signUp={signUp}/>}/>
                 <Route path="/" element={<Home/>}/>
-                <Route path="/gallery" element={<Gallery allFish={fishList} getAllFish={getAllFish}/>}/>
-                <Route path="/find-fish" element={<FindFish allFish={fishList} getAllFish={getAllFish}/>}/>
+                <Route path="/fish-gallery" element={<FishGallery allFish={fishList} getAllFish={getAllFish}/>}/>
 
                 <Route element={<ProtectedRoutes user={user}/>}>
                     <Route path="/my-tanks"

@@ -102,6 +102,9 @@ function AddTank(props:Props) {
                             <div onClick={toggleModal} className="overlay"></div>
                             <div className="modal-content">
                                 <h3>Add Fish to Tank</h3>
+                                <button className="button close-modal-button" onClick={toggleModal}>
+                                    X
+                                </button>
                                 <div>
                                     {props.allFish ? (
                                         <SelectFishGallery
@@ -114,7 +117,7 @@ function AddTank(props:Props) {
                                         <div>No fish found</div>
                                     )}
                                 </div>
-                                <button className="button" onClick={toggleModal}>
+                                <button className="button add-fish-modal-button" onClick={toggleModal}>
                                     Add Fish
                                 </button>
                             </div>
