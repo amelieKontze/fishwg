@@ -12,6 +12,7 @@ type Props = {
     tank: Tank[]
     allFish: Fish[]
     getAllFish: () => void
+    user: string
 }
 
 function UpdateTank(props: Props) {
@@ -61,7 +62,8 @@ function UpdateTank(props: Props) {
             tankSizeInLitres: tankSize,
             tankTemperature: tankTemperature,
             tankPh: tankPh,
-            residentFish: selectedFish
+            residentFish: selectedFish,
+            tankOwner: props.user
         }
         axios.put("/api/tank/update-tank/" + tankToUpdate?.id, updatedTank)
             .then(n => navigateTo("/my-tanks"))
