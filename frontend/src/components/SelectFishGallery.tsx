@@ -1,5 +1,8 @@
 import React, {useEffect} from 'react';
 import {Fish} from "../model/FishModel";
+import {AiOutlineMinusCircle} from "@react-icons/all-files/ai/AiOutlineMinusCircle";
+import {AiOutlinePlusCircle} from "@react-icons/all-files/ai/AiOutlinePlusCircle";
+import "../stylesheets/SelectFishGallery.css"
 
 type Props = {
     getAllFish: () => void
@@ -23,8 +26,9 @@ function SelectFishGallery(props: Props) {
                     <img src={fish.image}/>
                     <p>Herkunft: {fish.origin}</p>
                     <p>{fish.temperament}</p>
-                    <button onClick={() => props.handleFishSelection(fish)} className="button">
-                        {props.selectedFish.some((selected) => selected.id === fish.id) ? "Deselect" : "Select"}
+                    <button onClick={() => props.handleFishSelection(fish)} className="button select-fish-button">
+                        {props.selectedFish.some((selected) => selected.id === fish.id) ? <AiOutlineMinusCircle/> :
+                            <AiOutlinePlusCircle/>}
                     </button>
                 </div>
             ))}

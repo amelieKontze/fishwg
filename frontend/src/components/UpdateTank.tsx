@@ -95,7 +95,7 @@ function UpdateTank(props: Props) {
                     <span id="range-value">{tankPh} pH</span>
                 </div>
                 <button className="button" onClick={toggleModal}>
-                    change fish
+                    Fische ändern
                 </button>
                 <div>
                     {modal && (
@@ -116,8 +116,8 @@ function UpdateTank(props: Props) {
                     )}
                 </div>
                 <div className="two-buttons">
-                    <button onClick={updateTank} className="button">update</button>
-                    <button onClick={cancelUpdateTank} className="button">cancel</button>
+                    <button onClick={updateTank} className="button">Ändern</button>
+                    <button onClick={cancelUpdateTank} className="button">Abbrechen</button>
                 </div>
             </div>
         </div>
