@@ -48,7 +48,8 @@ function App() {
                                              user={user ?? ''}/>}/>
                     <Route path="/my-tanks/:id" element={<TankDetailsCard allTanks={tankList}/>}/>
                     <Route path="/update-tank/:id"
-                           element={<UpdateTank allFish={fishList} tank={tankList} getAllFish={getAllFish}/>}/>
+                           element={<UpdateTank allFish={fishList} tank={tankList} getAllFish={getAllFish}
+                                                user={user ?? ''}/>}/>
                 </Route>
             </Routes>
         </div>

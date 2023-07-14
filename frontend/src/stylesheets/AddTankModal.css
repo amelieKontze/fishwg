@@ -43,10 +43,11 @@
 #add-fish-card {
     background: linear-gradient(120deg, #7DD0E7 60%, #CBECF6 88%);
     color: #022F40;
-    height: 270px;
+    height: 235px;
+    width: 155px;
     border-radius: 15px;
     padding: 5px;
-    font-size: 15px;
+    font-size: 12px;
     line-height: 15px;
 }
 
@@ -62,11 +63,12 @@
     height: 40px;
     font-weight: bolder;
     background-color: #014B69;
+    width: 120px;
 }
 
 .close-modal-button {
     position: fixed;
-    top: 50px;
+    top: 55px;
     right: 1%;
     transform: translateX(-50%);
     height: 40px;

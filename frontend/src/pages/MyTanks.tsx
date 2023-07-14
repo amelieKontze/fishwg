@@ -4,12 +4,14 @@ import {Tank} from "../model/TankModel";
 import "../stylesheets/MyTanks.css"
 import {useNavigate} from "react-router-dom";
 
-type Props= {
+
+type Props = {
     getAllTanks: () => void
     allTanks: Tank[]
     user: string
 }
-function MyTanks(props:Props) {
+
+function MyTanks(props: Props) {
 
     const navigateTo = useNavigate();
     const userTanks = props.allTanks.filter(tank => tank.tankOwner === props.user)
@@ -26,9 +28,9 @@ function MyTanks(props:Props) {
     return (
         <div>
             <div className="page-heading">
-                <h1>My Tanks</h1>
+                <h1>Meine Aquarien</h1>
             </div>
-            <button onClick={addNewTank} className="button">Add Tank</button>
+            <button onClick={addNewTank} className="button" id="new-aquarium-button">Neues Aquarium hinzufügen</button>
             <div className="tanks">
                 {userTanks.map(tank => <TankCard key={tank.id} tank={tank}/>)}
             </div>

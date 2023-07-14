@@ -89,9 +89,9 @@ function FishGallery(props: Props) {
 
     return (
         <>
-            <h1>Fish Gallery</h1>
+            <h1>Fisch Gallerie</h1>
             <button className="find-fish-accordion-button button" onClick={toggleAccordion}>
-                {isAccordionOpen ? <AiOutlineCloseCircle/> : 'Filter Fish'}
+                {isAccordionOpen ? <AiOutlineCloseCircle/> : 'Filtern'}
             </button>
             <div className="find-fish-accordion">
                 {isAccordionOpen && (
@@ -99,7 +99,7 @@ function FishGallery(props: Props) {
                         <div>
                             <br/>
                             <input
-                                placeholder="Search fish by name"
+                                placeholder="Fisch nach Namen suchen"
                                 className="input-text-field"
                                 onChange={onChangeHandlerSetFilterName}
                             />
@@ -132,7 +132,7 @@ function FishGallery(props: Props) {
                             <input
                                 className="input-number"
                                 type="number"
-                                placeholder="Tank size in litres"
+                                placeholder="Wasservolumen (in l)"
                                 value={filterTankSize !== 0 ? filterTankSize : ''}
                                 onChange={onChangeHandlerSetFilterTankSize}
                             />
@@ -191,7 +191,7 @@ function FishGallery(props: Props) {
                             <br/>
                             <span id="range-value">{filterPh} pH</span>
                             <button className="button" onClick={clearFilters}>
-                                Clear
+                                Filter löschen
                             </button>
                         </div>
                         <br/>

@@ -5,7 +5,7 @@
 }
 
 .button {
-    width: 100px;
+    width: 110px;
     display: block;
     margin: 20px auto 0;
     font-size: 18px;
@@ -20,4 +20,9 @@
 .button:hover {
     background-color: #016E89;
     color: #219EBC;
+}
+
+#new-aquarium-button {
+    width: 170px;
+    margin-bottom: 10px;
 }

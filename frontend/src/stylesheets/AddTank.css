@@ -57,6 +57,7 @@
     align-items: center;
     margin-bottom: 10px;
     cursor: pointer;
+    padding-left: 7px;
 }
 
 .radio-button input[type="radio"] {

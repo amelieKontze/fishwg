@@ -46,10 +46,10 @@ function Navbar(props: Props) {
                         <Link to="/" className="nav">Home</Link>
                     </li>
                     <li>
-                        <Link to="/fish-gallery" className="nav">Fish Gallery</Link>
+                        <Link to="/fish-gallery" className="nav">Fisch Gallerie</Link>
                     </li>
                     <li>
-                        <Link to="/my-tanks" className="nav">MyTanks</Link>
+                        <Link to="/my-tanks" className="nav">Meine Aquarien</Link>
                     </li>
                     {isLoggedIn ? (
                         <li>

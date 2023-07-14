@@ -54,9 +54,9 @@ function TankDetailsCard(props: Props) {
                     <div className="modal">
                         <div onClick={toggleModal} className="overlay"></div>
                         <div className="modal-content">
-                            <h3>Are you sure you want to delete this tank?</h3>
-                            <button className="button" id="delete-button" onClick={deleteTank}>Yes</button>
-                            <button className="button" onClick={toggleModal}>No</button>
+                            <h3>Sicher, dass du das Aquarium löschen möchtest?</h3>
+                            <button className="button" id="delete-button" onClick={deleteTank}>Ja</button>
+                            <button className="button" onClick={toggleModal}>Nein</button>
                         </div>
                     </div>
                 )}

@@ -12,6 +12,7 @@ type Props = {
     tank: Tank[]
     allFish: Fish[]
     getAllFish: () => void
+    user: string
 }
 
 function UpdateTank(props: Props) {
@@ -61,7 +62,8 @@ function UpdateTank(props: Props) {
             tankSizeInLitres: tankSize,
             tankTemperature: tankTemperature,
             tankPh: tankPh,
-            residentFish: selectedFish
+            residentFish: selectedFish,
+            tankOwner: props.user
         }
         axios.put("/api/tank/update-tank/" + tankToUpdate?.id, updatedTank)
             .then(n => navigateTo("/my-tanks"))
@@ -93,7 +95,7 @@ function UpdateTank(props: Props) {
                     <span id="range-value">{tankPh} pH</span>
                 </div>
                 <button className="button" onClick={toggleModal}>
-                    change fish
+                    Fische ändern
                 </button>
                 <div>
                     {modal && (
@@ -114,8 +116,8 @@ function UpdateTank(props: Props) {
                     )}
                 </div>
                 <div className="two-buttons">
-                    <button onClick={updateTank} className="button">update</button>
-                    <button onClick={cancelUpdateTank} className="button">cancel</button>
+                    <button onClick={updateTank} className="button">Ändern</button>
+                    <button onClick={cancelUpdateTank} className="button">Abbrechen</button>
                 </div>
             </div>
         </div>

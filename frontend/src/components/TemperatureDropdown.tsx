@@ -8,7 +8,7 @@ type Props = {
 const TemperatureDropdown: React.FC<Props> = ({value, onChange}) => {
     return (
         <select className="dropdown-temperature" value={value} onChange={onChange}>
-            <option value="">Tank Temperature</option>
+            <option value="">Wassertemperatur</option>
             <option value="15">15°C</option>
             <option value="16">16°C</option>
             <option value="17">17°C</option>

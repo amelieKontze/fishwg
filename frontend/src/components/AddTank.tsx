@@ -8,15 +8,16 @@ import TemperatureDropdown from "./TemperatureDropdown";
 import useInputValues from "../hooks/UseInputValues";
 import WaterTypeRadio from "./WaterTypeRadio";
 import SelectFishGallery from "./SelectFishGallery";
+import {FaFish} from "@react-icons/all-files/fa/FaFish";
 
-type Props= {
+type Props = {
     getAllTanks: () => void
     getAllFish: () => void
     allFish: Fish[]
     user: string
 }
 
-function AddTank(props:Props) {
+function AddTank(props: Props) {
 
     const {
         tankName, toggleModal, onChangeHandlerSetTankName,
@@ -75,7 +76,7 @@ function AddTank(props:Props) {
     return (
         <div className="new-tank">
             <div>
-                <input className="input-text-field" placeholder="Name your tank" type="text" value={tankName}
+                <input className="input-text-field" placeholder="Name des Aquariums" type="text" value={tankName}
                        onChange={onChangeHandlerSetTankName}/>
                 <div>
                     <WaterTypeRadio onChange={onChangeHandlerSetWaterType} value={waterType}/>
@@ -84,7 +85,7 @@ function AddTank(props:Props) {
                     <TemperatureDropdown value={tankTemperature} onChange={onChangeHandlerSetTankTemperature}/>
                 </div>
                 <div>
-                    <input className="input-number" type="number" placeholder="Tank size in litres"
+                    <input className="input-number" type="number" placeholder="Wasservolumen (in l)"
                            value={tankSize !== 0 ? tankSize : ""} onChange={onChangeHandlerSetTankSize}/>
                 </div>
                 <div>
@@ -94,14 +95,14 @@ function AddTank(props:Props) {
                     <span id="range-value">{tankPh} pH</span>
                 </div>
                 <button className="button" onClick={toggleModal}>
-                    Add Fish
+                    <FaFish/>hinzufügen
                 </button>
                 <div>
                     {modal && (
                         <div className="modal">
                             <div onClick={toggleModal} className="overlay"></div>
                             <div className="modal-content">
-                                <h3>Add Fish to Tank</h3>
+                                <h3>Fische hinzufügen</h3>
                                 <button className="button close-modal-button" onClick={toggleModal}>
                                     X
                                 </button>
@@ -118,15 +119,15 @@ function AddTank(props:Props) {
                                     )}
                                 </div>
                                 <button className="button add-fish-modal-button" onClick={toggleModal}>
-                                    Add Fish
+                                    Hinzufügen
                                 </button>
                             </div>
                         </div>
                     )}
                 </div>
                 <div className="two-buttons">
-                    <button onClick={addTank} className="button">Add</button>
-                    <button onClick={cancelAddTank} className="button">cancel</button>
+                    <button onClick={addTank} className="button">Hinzufügen</button>
+                    <button onClick={cancelAddTank} className="button">Abbrechen</button>
                 </div>
             </div>
         </div>
